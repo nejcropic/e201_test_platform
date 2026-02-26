@@ -6,9 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
-    <height>607</height>
+    <width>1299</width>
+    <height>874</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>9</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -28,12 +33,13 @@
         <widget class="QGroupBox" name="groupBox_3">
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>REF Setup </string>
+          <string>REF SETUP</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_14">
           <item row="0" column="0">
@@ -49,6 +55,7 @@
               <widget class="QLabel" name="label_2">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -60,8 +67,15 @@
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="singleturn_bits_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -87,6 +101,7 @@
               <widget class="QLabel" name="label_12">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -98,8 +113,15 @@
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="status_bits_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -119,12 +141,13 @@
         <widget class="QGroupBox" name="dut_connection_groupbox">
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>DUT Connection</string>
+          <string>DUT CONNECTION</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
@@ -134,6 +157,12 @@
               <widget class="QComboBox" name="dut_comport_combobox">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
                </property>
                <property name="editable">
                 <bool>false</bool>
@@ -149,6 +178,7 @@
               <widget class="QLabel" name="label_4">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -160,6 +190,12 @@
              </item>
              <item row="0" column="2">
               <widget class="QPushButton" name="dut_comport_connect">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="text">
                 <string>CONNECT</string>
                </property>
@@ -200,12 +236,13 @@ color: #C62828; font-weight: 600;
         <widget class="QGroupBox" name="dut_connection_groupbox_2">
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>REF Connection</string>
+          <string>REF CONNECTION</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
           <item row="0" column="0">
@@ -215,6 +252,12 @@ color: #C62828; font-weight: 600;
               <widget class="QComboBox" name="ref_comport_combobox">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
                </property>
                <property name="editable">
                 <bool>false</bool>
@@ -230,6 +273,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_5">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -241,6 +285,12 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="2">
               <widget class="QPushButton" name="ref_comport_connect">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="text">
                 <string>CONNECT</string>
                </property>
@@ -268,12 +318,13 @@ color: #C62828; font-weight: 600;
         <widget class="QGroupBox" name="groupBox">
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>DUT Setup </string>
+          <string>DUT SETUP</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_11">
           <item row="0" column="0">
@@ -289,6 +340,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -300,8 +352,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="singleturn_bits">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -327,6 +386,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_3">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -338,8 +398,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="multiturn_bits">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -365,6 +432,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_8">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -376,8 +444,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="crc_bits">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -403,6 +478,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_7">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -414,8 +490,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="status_bits">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -441,6 +524,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_9">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -452,8 +536,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="counts_rev_dut">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -473,12 +564,13 @@ color: #C62828; font-weight: 600;
         <widget class="QGroupBox" name="groupBox_2">
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>Motor</string>
+          <string>MOTOR</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_17">
           <item row="0" column="0">
@@ -492,8 +584,15 @@ color: #C62828; font-weight: 600;
              </property>
              <item row="0" column="0">
               <widget class="QPushButton" name="dut_comport_connect_3">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -507,6 +606,7 @@ color: #C62828; font-weight: 600;
               <widget class="QCheckBox" name="checkBox">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -537,8 +637,15 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QSpinBox" name="spinBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -585,6 +692,7 @@ color: #C62828; font-weight: 600;
          </property>
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -606,6 +714,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_11">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -619,6 +728,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="ref_counts_label">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -632,6 +742,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_13">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -645,6 +756,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_14">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -670,6 +782,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_16">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -683,6 +796,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_15">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -696,6 +810,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_17">
                <property name="font">
                 <font>
+                 <pointsize>9</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
@@ -721,11 +836,17 @@ color: #C62828; font-weight: 600;
      <widget class="QWidget" name="widget_14" native="true">
       <property name="maximumSize">
        <size>
-        <width>200</width>
+        <width>230</width>
         <height>16777215</height>
        </size>
       </property>
       <layout class="QGridLayout" name="gridLayout_20">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
        <item row="2" column="0">
         <spacer name="verticalSpacer">
          <property name="orientation">
@@ -744,18 +865,391 @@ color: #C62828; font-weight: 600;
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>200</height>
+           <height>100</height>
           </size>
          </property>
          <property name="font">
           <font>
+           <pointsize>9</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
          <property name="title">
-          <string>Plot Control</string>
+          <string>PLOT CONTROL</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_31">
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_18" native="true">
+            <layout class="QGridLayout" name="gridLayout_30">
+             <item row="3" column="1">
+              <widget class="QComboBox" name="comboBox_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>AUTO</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>ERROR</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>NOISE</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QComboBox" name="comboBox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>DUT&amp;REF</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DUT</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>REF</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QComboBox" name="comboBox_3">
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Degrees</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Counts</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>μm</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_18">
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Show:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_19">
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Plot units:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_20">
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Analysis:</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_6">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="title">
+          <string>REGISTER ACCESS</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_26">
+          <item row="1" column="0">
+           <widget class="QWidget" name="widget_16" native="true">
+            <layout class="QGridLayout" name="gridLayout_28">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="minimumSize">
+                <size>
+                 <width>135</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>SET MULTITURN</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="spinBox_4">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QWidget" name="widget_17" native="true">
+            <layout class="QGridLayout" name="gridLayout_29">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="pushButton_5">
+               <property name="minimumSize">
+                <size>
+                 <width>135</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>SET POSITION OFFSET</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QSpinBox" name="spinBox_5">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QPushButton" name="pushButton_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>READ DETAILED STATUS</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_15" native="true">
+            <layout class="QGridLayout" name="gridLayout_27">
+             <item row="2" column="0">
+              <widget class="QPushButton" name="pushButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>WRITE</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>READ</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QSpinBox" name="spinBox_3">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="prefix">
+                <string>Address: 0x</string>
+               </property>
+               <property name="displayIntegerBase">
+                <number>16</number>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QSpinBox" name="spinBox_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="suffix">
+                <string/>
+               </property>
+               <property name="prefix">
+                <string>Value: </string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -768,7 +1262,7 @@ color: #C62828; font-weight: 600;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>794</width>
+     <width>1299</width>
      <height>22</height>
     </rect>
    </property>
