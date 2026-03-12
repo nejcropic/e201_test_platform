@@ -1,22 +1,23 @@
+[build-system]
+requires = ["uv_build>=0.9.5,<0.10.0"]
+build-backend = "uv_build"
+
 [project]
 name = "e201-test-platform"
 version = "0.1.0"
-description = "Encoder testing platform with E201 devices"
+description = "Testing platform to test encoders with E201 interface"
 readme = "README.md"
 authors = [
-    { name = "nejcropic", email = "nejc.ropic@gmail.com" }
+    { name = "ropic", email = "nejc.ropic@rls.si" }
 ]
 requires-python = ">=3.11"
 dependencies = [
     "numpy>=2.4.2",
-    "PyQt5==5.15.9",
-    "pyqtgraph>=0.14.0",
+    "pyqt5>=5.15.11",
     "pyserial>=3.5",
+    "pyqtgraph"
 ]
 
-[build-system]
-requires = ["uv_build>=0.9.26,<0.10.0"]
-build-backend = "uv_build"
 
 [tool.uv]
 native-tls = true
@@ -24,7 +25,5 @@ required-environments = [
     "sys_platform == 'win32' and platform_machine == 'AMD64'"
 ]
 
-[dependency-groups]
-dev = [
-    "pyqt5-tools==5.15.9.3.3",
-]
+[project.scripts]
+e201 = "e201_test_platform.main:main"
