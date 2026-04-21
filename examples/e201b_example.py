@@ -1,16 +1,23 @@
-import time
+from e201_gui.e201_versions.e201b import E201B
+from e201_gui.parser import BISSParser
 
-from e201_test_platform.e201_versions.e201b import E201B
 
-orbis_data = {
-    'resolution': 16384,
-    'singleturn_bits': 14,
-    'multiturn_bits': 16,
-    'status_bits': 2,
-    'crc_bits': 6,
-}
-e201 = E201B("COM78", orbis_data)
+e201 = E201B("COM78")
 e201.open()
+
+encoder_data = {
+    "dut_settings": {
+        "resolution": 2097152,
+        "singleturn_bits": 21,
+        "multiturn_bits": 16,
+        "status_bits": 2,
+        "crc_bits": 8,
+    },
+    "ref_settings": {"number_of_periods": 11840, "interpolation_factor": 100},
+}
+
+
+biss_parser = BISSParser(encoder_data)
 
 try:
     e201.power_on()
@@ -30,9 +37,11 @@ try:
 
     print("Reading position... ")
     pos = e201.parse_position(e201.read_position())
-    print("- Position [deg]:", pos.get('angle'))
-    print("- Status:", pos.get('status'))
-    print("- Position [counts]:", pos.get('singleturn'))
+
+    print(pos)
+    # print("- Position [deg]:", pos.get('angle'))
+    # print("- Status:", pos.get('status'))
+    # print("- Position [counts]:", pos.get('singleturn'))
     # e201.check_framerate()
 
 except Exception:

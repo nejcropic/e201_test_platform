@@ -1,0 +1,27 @@
+[build-system]
+requires = ["uv_build>=0.9.4,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "letp-e2019"
+version = "1.0.4"
+requires-python = ">=3.11,<3.12"
+license = { text = "Copyright (c) 2025 RLS d.o.o, Pod vrbami 2, 1218 Komenda, Slovenia" }
+classifiers = [
+    "Programming Language :: Python :: 3"
+]
+
+dependencies = [
+    "pyserial",
+]
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+
+[dependency-groups]
+dev = [
+    "twine>=6.2.0",
+]

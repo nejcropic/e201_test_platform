@@ -1,0 +1,16 @@
+{
+  // formatter
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  // settings will come from pytest.ini file
+  "python.testing.pytestEnabled": true,
+  // terminal
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "args": []
+    }
+  },
+  "python.analysis.extraPaths": ["./src", "./"]
+}

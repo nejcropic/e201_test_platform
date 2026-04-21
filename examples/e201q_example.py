@@ -1,9 +1,7 @@
-import time
-
-from e201_test_platform.e201_versions.e201q import E201Q
+from e201_gui.e201_versions.e201q import E201Q
 
 ref_data = {
-    'resolution': 1184000,
+    "resolution": 1184000,
 }
 e201 = E201Q("COM77", ref_data)
 e201.open()
@@ -15,8 +13,8 @@ try:
     print("Pos:", e201.read_position())
 
     pos = e201.parse_position(e201.read_position())
-    pos_deg = e201.get_angle(pos.get('singleturn'))
-    print("Pos deg:",pos_deg)
+    pos_deg = e201.get_angle(pos.get("singleturn"))
+    print("Pos deg:", pos_deg)
 
     e201.check_framerate()
 
