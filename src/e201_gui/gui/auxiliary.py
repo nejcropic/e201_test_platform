@@ -1,8 +1,10 @@
-import traceback
+from pathlib import Path
 from e201_gui.e201_drivers.parser import Parser
-from e201_gui.e201_drivers.registers_presets import get_registers_preset
+from e201_gui.e201_drivers.registers_preset import get_registers_preset
 from e201_gui.gui import messages
+from e201_gui.helpers.file_handlers import load_yaml, save_to_yaml
 from letp_e2019.e2019 import get_all_e201
+from e201_gui.motor_drivers.supported_motors import supported_motor_types
 
 
 class Auxiliary:
@@ -12,6 +14,10 @@ class Auxiliary:
         self.messages = messages
         self.available_e201 = get_all_e201()
         self.preset_registers: dict = {}
+
+    def populate_supported_motors(self):
+        for motor_type in supported_motor_types.keys():
+            self.ui.supported_motors.addItem(motor_type)
 
     def get_e201_devices(self):
         self.available_e201 = get_all_e201()
@@ -33,67 +39,6 @@ class Auxiliary:
 
         self.ui.dut_comport_combobox.setCurrentIndex(0)
         self.ui.ref_comport_combobox.setCurrentIndex(0)
-
-    def connect_dut(self):
-        port = self.ui.dut_comport_combobox.currentText()
-        e201_type = self.ui.dut_type_groupbox.currentText()
-        voltage = 5000 if self.ui.five_volt_button.isChecked() else 3300
-        if port != "None":
-            if self.parent.acquisition_worker.master.dut is None:
-                try:
-                    self.update_parser()
-                    self.call_reg_function("connect_dut", e201_type, port)
-                    self.call_reg_function("dut_power_on", voltage)
-                    self.call_reg_function("set_dut_communication", self.parent.acquisition_worker.parser.dut_settings)
-                    self.set_connection_button(self.ui.dut_connection_indication, self.ui.dut_comport_connect, True)
-                    self.load_register_access_preset()
-
-                except Exception as e:
-                    tb = traceback.format_exc()
-                    self.messages.show_warning(
-                        "Cannot connect to dut!",
-                        f"Error: {e} \nLine: {tb}",
-                    )
-            else:
-                self.sync_sampling(False)
-                self.call_reg_function("close_dut")
-                self.set_connection_button(self.ui.dut_connection_indication, self.ui.dut_comport_connect, False)
-
-    def connect_ref(self):
-        port = self.ui.ref_comport_combobox.currentText()
-        e201_type = self.ui.ref_type_groupbox.currentText()
-        if port != "None":
-            if self.parent.acquisition_worker.master.ref is None:
-                try:
-                    self.update_parser()
-                    self.call_reg_function("connect_ref", e201_type, port)
-                    self.call_reg_function("ref_power_on", 5000)
-                    self.set_connection_button(self.ui.ref_connection_indication, self.ui.ref_comport_connect, True)
-                except Exception as e:
-                    tb = traceback.format_exc()
-                    self.messages.show_warning(
-                        "Cannot connect to reference!",
-                        f"Error: {e} \nLine: {tb}",
-                    )
-            else:
-                self.sync_sampling(False)
-                self.call_reg_function("close_ref")
-                self.set_connection_button(self.ui.ref_connection_indication, self.ui.ref_comport_connect, False)
-
-    def sync_sampling(self, checked):
-        if checked:
-            if self.parent.acquisition_worker.master.dut is None or self.parent.acquisition_worker.master.ref is None:
-                self.messages.show_warning(
-                    "Connection with DUT and reference have to be established to sync samples!",
-                    "",
-                )
-                return
-
-            self.call_reg_function("enable_synced_sampling")
-            self.parent.on_zero_offset()
-
-        else:
-            self.call_reg_function("disable_synced_sampling")
 
     def get_dut_parameters(self):
         return {
@@ -121,27 +66,9 @@ class Auxiliary:
 
         try:
             self.parent.acquisition_worker.parser = Parser(encoder_data=encoder_data)
+            self.save_last_settings()
         except Exception:
             self.messages.show_warning("Cannot initialize parser!")
-
-    def write_registers(self):
-        address, value, signed, bank, length = self.get_register_params()
-        self.parent.acquisition_worker.enqueue_command("write_dut_register", value, bank, address, length, signed)
-
-    def read_registers(self):
-        address, value, signed, bank, length = self.get_register_params()
-        self.parent.acquisition_worker.enqueue_command("read_dut_register", bank, address, length, signed)
-
-    def call_reg_function(self, func_name: str, *args):
-        self.parent.acquisition_worker.enqueue_command(func_name, *args)
-
-    def set_multiturn(self):
-        mt_value = self.ui.multiturn_value.value()
-        self.parent.acquisition_worker.enqueue_command("set_multiturn", mt_value)
-
-    def set_position_offset(self):
-        offset_value = self.ui.position_offset_value.value()
-        self.parent.acquisition_worker.enqueue_command("set_position_offset", offset_value)
 
     def get_register_params(self):
         address = self.ui.register_address_spinbox.value()
@@ -162,22 +89,13 @@ class Auxiliary:
             indicator.setStyleSheet("color: #C62828; font-weight: 600;")
             button.setText("CONNECT")
 
-    def dut_power_on(self):
-        voltage = 5000 if self.ui.five_volt_button.isChecked() else 3300
-        self.parent.acquisition_worker.enqueue_command("dut_power_on", voltage)
-
-    def dut_power_cycle(self):
-        voltage = 5000 if self.ui.five_volt_button.isChecked() else 3300
-        self.parent.acquisition_worker.enqueue_command("dut_power_cycle", voltage)
-
     def load_register_access_preset(self):
         encoder = self.ui.predefined_registers.currentText()
         preset_values = get_registers_preset(encoder)
         self.preset_registers = preset_values
         self.update_load_register_combobox(preset_values)
-        if self.parent.acquisition_worker.master.dut is None:
-            return
-        self.parent.acquisition_worker.enqueue_command("set_register_access", preset_values)
+        if self.parent.acquisition_worker.master.dut is not None:
+            self.parent.acquisition_worker.enqueue_command("set_register_access", preset_values)
 
     def update_load_register_combobox(self, registers: dict):
         self.ui.loaded_registers.clear()
@@ -195,3 +113,31 @@ class Auxiliary:
         self.ui.register_bank_spinbox.setValue(register.get("bank"))
         self.ui.register_length_spinbox.setValue(register.get("length"))
         self.ui.register_signed_checkbox.setCheckState(bool(register.get("is_signed")))
+
+    def load_last_settings(self):
+        filepath = Path(self.parent.last_settings_filename)
+        if not filepath.exists():
+            return
+
+        settings = load_yaml(self.parent.last_settings_filename)
+        dut_set = settings.get("dut_settings")
+        ref_set = settings.get("ref_settings")
+        # DUT
+        self.ui.dut_counts_rev.setValue(dut_set.get("resolution"))
+        self.ui.dut_singleturn_bits.setValue(dut_set.get("singleturn_bits"))
+        self.ui.dut_multiturn_bits.setValue(dut_set.get("multiturn_bits"))
+        self.ui.dut_status_bits.setValue(dut_set.get("status_bits"))
+        self.ui.dut_crc_bits.setValue(dut_set.get("crc_bits"))
+        self.ui.dut_bytes.setValue(dut_set.get("dut_bytes"))
+        self.ui.dut_polarity.setValue(dut_set.get("polarity"))
+        self.ui.dut_phase.setValue(dut_set.get("phase"))
+        self.ui.dut_frequency.setValue(dut_set.get("frequency"))
+
+        # REF
+        self.ui.ref_interpolation_factor.setValue(ref_set.get("interpolation_factor"))
+        self.ui.ref_number_of_periods.setValue(ref_set.get("number_of_periods"))
+
+    def save_last_settings(self):
+        encoder_data = {"dut_settings": self.get_dut_parameters(), "ref_settings": self.get_ref_parameters()}
+
+        save_to_yaml(encoder_data, self.parent.last_settings_filename)

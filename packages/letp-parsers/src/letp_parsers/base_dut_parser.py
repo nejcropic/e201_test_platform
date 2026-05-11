@@ -23,7 +23,7 @@ class BaseDUTParser(ABC):
         self.incremental_position_bits = self.dut_settings.get("incremental_position_bits", 0)
 
     @abstractmethod
-    def parse_dut_frame(self, dut_frame: bytes, dut_bytes: int) -> dict:
+    def parse_dut_frame(self, dut_frame: bytes | list, dut_bytes: int) -> dict:
         pass
 
     @staticmethod

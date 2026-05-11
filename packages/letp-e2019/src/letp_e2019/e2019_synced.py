@@ -1,3 +1,14 @@
+"""
+COPYRIGHT(c) 2020 RLS d.o.o, Pod vrbami 2, 1218 Komenda, Slovenia
+
+file:      e2019_synced.py
+brief:     Manager for handling synchronized sampling between two E2019 devices (DUT and REF) connected via hardware trigger. 
+author(s): Nejc Ropič
+date:      17.4.2026
+
+details:   Provides methods for reading synced positions, enabling/disabling synced sampling, and managing device connections.
+"""
+
 import time
 import struct
 
@@ -22,11 +33,11 @@ class E2019Synced:
     def __init__(self, config: dict):
         self._validate_config(config)
 
-        self.dut: E2019
+        self.dut: E2019 | None = None  # type: ignore 
         self.ref: E2019 | None = None  # type: ignore
 
-        self.dut = self._init_device(config["e201_dut"], role="DUT")
-        self.ref = self._init_device(config["e201_ref"], role="REF")
+        self.dut = self._init_device(config["e201_dut"], role="DUT") 
+        self.ref = self._init_device(config["e201_ref"], role="REF") 
 
     def _validate_config(self, config: dict) -> None:
         """Config dictionary validation"""
@@ -43,13 +54,13 @@ class E2019Synced:
             if missing_dev:
                 raise KeyError(f"{key} missing required keys: {missing_dev}")
 
-    def _init_device(self, device_cfg: dict, role: str) -> E2019:
+    def _init_device(self, device_cfg: dict, role: str) -> E2019 | None:
         """Device initialization"""
         comport = device_cfg["comport"]
         dev_type = device_cfg["type"]
 
         if comport is None:
-            raise ValueError("Comport no selected!")
+            return None
 
         if dev_type not in self._e201_versions:
             raise ValueError(f"{role}: Invalid E201 type '{dev_type}'. Available: {list(self._e201_versions.keys())}")
@@ -74,7 +85,7 @@ class E2019Synced:
 
         # DUT
         if self.dut is not None:
-            raw = self._parse_master_raw(self.dut.read_position())
+            raw = self._parse_master(self.dut.read_position())
 
             # ensure correct size
             frame[0:dut_len] = raw[:dut_len].ljust(dut_len, b"\x00")
@@ -84,7 +95,7 @@ class E2019Synced:
         # REF (after DUT)
         ref_offset = dut_len
         if self.ref is not None:
-            raw = self._parse_reference_raw(self.ref.read_position())
+            raw = self._parse_slave(self.ref.read_position())
             frame[ref_offset : ref_offset + ref_len] = raw[:ref_len]
         else:
             frame[ref_offset : ref_offset + ref_len] = b"\x00" * ref_len
@@ -97,26 +108,34 @@ class E2019Synced:
         return frame
 
     @staticmethod
-    def _parse_master_raw(response: str):
-        return bytes.fromhex(response.strip())
+    def _parse_master(response: str) -> bytes: 
+        master_raw = response.strip()
+        if response.startswith("T"):
+            hex_data = master_raw.split("=")[1]
+            return bytes.fromhex(hex_data)  # 4 bytes
+
+        return bytes.fromhex(master_raw)
 
     @staticmethod
-    def _parse_reference_raw(response: str):
-        ref_raw = response.strip()
+    def _parse_slave(response: str) -> bytes:
+        slave_raw = response.strip()
         # Trigger mode: T=XXXXXXXX
-        if ref_raw.startswith("T="):
-            hex_data = ref_raw.split("=")[1]
+        if slave_raw.startswith("T"):
+            hex_data = slave_raw.split("=")[1]
 
             if len(hex_data) != 8:
-                raise ValueError(f"Invalid trigger frame: {ref_raw}")
+                raise ValueError(f"Invalid trigger frame: {slave_raw}")
 
             return bytes.fromhex(hex_data)  # 4 bytes
 
-        # '>' command: 24 hex chars
-        if len(ref_raw) != 24:
-            raise ValueError(f"Invalid '>' frame length: {ref_raw}")
+        if len(slave_raw) == 0:
+            raise ValueError("Empty response from slave!")
 
-        full_bytes = bytes.fromhex(ref_raw)  # 12 bytes
+        # '>' command: 24 hex chars
+        if len(slave_raw) != 24:
+            raise ValueError(f"Invalid '>' frame length: {slave_raw}")
+
+        full_bytes = bytes.fromhex(slave_raw)  # 12 bytes
 
         # Keep ONLY position (first 4 bytes)
         return full_bytes[:4]
@@ -126,8 +145,13 @@ class E2019Synced:
         if self.dut is None or self.ref is None:
             return
 
-        self.ref.enable_trigger_slave()
-        self.dut.enable_trigger_master()
+        ref = self.ref.enable_trigger_slave()
+        if ref != "Trigger Slave":
+            raise ValueError(f"REF Trigger Slave not enabled! Resp: {ref}")
+
+        dut = self.dut.enable_trigger_master()
+        if dut != "Trigger Master":
+            raise ValueError(f"DUT Trigger Master not enabled! Resp: {dut}")
 
     def disable_synced_sampling(self):
         """Disable synced sampling"""

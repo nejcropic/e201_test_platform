@@ -1,60 +1,65 @@
+"""
+COPYRIGHT(c) 2020 RLS d.o.o, Pod vrbami 2, 1218 Komenda, Slovenia
+
+file:      e2019b.py
+brief:     E2019P interface for P911 communication with protocol.
+author(s): Nejc Ropič
+date:      17.4.2026
+
+details:   Supports communication with commands supported for E2019B.
+"""
+
 from letp_e2019.e2019 import E2019
+from letp_e2019.e2019_helpers import e2019b_available_freq
 
 
 class E2019B(E2019):
     type: str = "B"
-    available_freq = {
-        10000: 0,
-        5000: 1,
-        3333: 2,
-        2500: 3,
-        2000: 4,
-        1667: 5,
-        1429: 6,
-        1250: 7,
-        1111: 8,
-        1000: 9,
-        909: 10,
-        833: 11,
-        769: 12,
-        714: 13,
-        667: 14,
-        625: 15,
-        500: 17,
-        333: 18,
-        250: 19,
-        200: 20,
-        167: 21,
-        143: 22,
-        125: 23,
-        111: 24,
-        100: 25,
-        91: 26,
-        83: 27,
-        77: 28,
-        71: 29,
-        67: 30,
-        63: 31,
-    }
 
     def __init__(self, com):
+        """Initialize E2019B device with frequency table, data size, and read command."""
         super().__init__(com)
-        self.bank_selected = -1
+        self.available_freq = e2019b_available_freq
         self.bytes = 8
         self.read_command = "4"
 
     def write_registers(self, value: int, bank: int, address: int | str, length: int, is_signed: bool = False):
+        """
+        Write value to consecutive registers.
+
+        Args:
+            value: Value to write.
+            bank: Register bank.
+            address: Start address.
+            length: Number of bytes.
+            is_signed: Interpret value as signed.
+        """
         addr = self._to_addr(address)
 
         value_bytes = int(value).to_bytes(length, byteorder="big", signed=is_signed)
-        self.select_bank(bank)
+        if address != 0x49:
+            self.select_bank(bank)
+
         for i, b in enumerate(value_bytes):
-            self._raise_on_status(self.write_register(b, addr + i))
+            self._raise_on_status(self._write_register(b, addr + i))
 
     def read_registers(self, bank: int, address: int | str, length: int, is_signed: bool = False) -> bytes:
-        self.select_bank(bank)
+        """
+        Read multiple registers.
 
-        resp = self.read_register(address, length)
+        Args:
+            bank: Register bank.
+            address: Start address.
+            length: Number of bytes.
+            is_signed: Unused (kept for API compatibility).
+
+        Returns:
+            Raw bytes read from device.
+        """
+        if address != 0x49:
+            self.select_bank(bank)
+
+        resp = self._read_register(address, length)
         parsed = self._parse_register_response(resp)
 
         self._raise_on_status(parsed["status"])
@@ -62,7 +67,17 @@ class E2019B(E2019):
         response_bytes = bytes.fromhex(parsed.get("data_hex"))
         return response_bytes
 
-    def write_register(self, value: int, address: int | str) -> str:
+    def _write_register(self, value: int, address: int | str) -> str:
+        """
+        Write single register.
+
+        Args:
+            value: Byte value (0–255).
+            address: Register address.
+
+        Returns:
+            Raw device response.
+        """
         addr = self._to_addr(address)
 
         if not (0 <= value <= 255):
@@ -73,7 +88,17 @@ class E2019B(E2019):
         cmd = f"Ws{value:03d}:{addr:03d}"
         return self.execute_command_with_response(cmd)
 
-    def read_register(self, address: int | str, length: int) -> str:
+    def _read_register(self, address: int | str, length: int) -> str:
+        """
+        Read consecutive registers.
+
+        Args:
+            address: Start address.
+            length: Number of bytes (1–64).
+
+        Returns:
+            Raw device response string.
+        """
         addr = self._to_addr(address)
 
         if not (1 <= length <= 64):
@@ -85,19 +110,19 @@ class E2019B(E2019):
         return self.execute_command_with_response(cmd)
 
     def select_bank(self, bank: int):
-        if bank != self.bank_selected:
-            self._raise_on_status(self.write_register(bank, 0x40))
-            self.bank_selected = bank
+        """Select register bank."""
+        self._raise_on_status(self._write_register(bank, 0x40))
 
     @staticmethod
     def _to_addr(address: int | str) -> int:
         """
-        Accepts '74', '74', '0x4A', '4A'
+        Convert address from int/str (dec/hex) to integer.
+
         Args:
-            address (int | str): address
+            address: Address in int, decimal string, or hex string.
 
         Returns:
-            address integer
+            Integer address.
         """
         if isinstance(address, int):
             return address

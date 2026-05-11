@@ -819,3 +819,20 @@ asko_encolink_preset = {
         "execute": 1,
     },
 }
+
+supported_presets: dict = {
+    "asko_biss": asko_biss_preset,
+    "asko_encolink": asko_encolink_preset,
+    "orbis_bbm": orbis_preset,
+    "aksim2": aksim2_preset,
+    "aksim4": aksim4_preset,
+    "artos": artos_preset,
+}
+
+
+def get_registers_preset(encoder: str) -> dict:
+    encoder = encoder.lower().replace(" ", "_")
+    if encoder not in supported_presets:
+        raise ValueError("Encoder preset not implemented!")
+
+    return supported_presets[encoder]

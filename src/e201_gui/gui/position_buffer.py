@@ -20,7 +20,8 @@ class PositionBuffer:
         self.err_deg = np.zeros(size, dtype=np.float64)
         self.inl_deg = np.zeros(size, dtype=np.float64)
         self.dnl_deg = np.zeros(size, dtype=np.float64)
-        self.noise = np.zeros(size, dtype=np.float64)
+        self.noise_dut = np.zeros(size, dtype=np.float64)
+        self.noise_ref = np.zeros(size, dtype=np.float64)
         self.multiturn = np.zeros(size, dtype=np.int64)
 
         self.lock = QtCore.QMutex()
@@ -36,7 +37,8 @@ class PositionBuffer:
         err_deg: float,
         inl_deg: float,
         dnl_deg: float,
-        noise: float,
+        noise_dut: float,
+        noise_ref: float,
         multiturn: int | None,
     ):
         with QtCore.QMutexLocker(self.lock):
@@ -52,7 +54,8 @@ class PositionBuffer:
             self.err_deg[i] = err_deg
             self.inl_deg[i] = inl_deg
             self.dnl_deg[i] = dnl_deg
-            self.noise[i] = noise
+            self.noise_dut[i] = noise_dut
+            self.noise_ref[i] = noise_ref
             self.multiturn[i] = multiturn
 
             self.index = (i + 1) % self.size
@@ -78,6 +81,7 @@ class PositionBuffer:
                 "err_deg": self.err_deg[indices].copy(),
                 "inl_deg": self.inl_deg[indices].copy(),
                 "dnl_deg": self.dnl_deg[indices].copy(),
-                "noise": self.noise[indices].copy(),
+                "noise_dut": self.noise_dut[indices].copy(),
+                "noise_ref": self.noise_ref[indices].copy(),
                 "multiturn": self.multiturn[indices].copy(),
             }

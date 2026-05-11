@@ -1,19 +1,20 @@
 import traceback
 from queue import Queue, Empty
 from PyQt5.QtCore import QThread, pyqtSignal
-from e201_gui.motor_drivers.epos import EPOS
+from e201_gui.motor_drivers.motor_base import MotorBase
+from e201_gui.motor_drivers.supported_motors import get_supported_motor
 
 
 class MotorWorker(QThread):
     finished_signal = pyqtSignal(object)
     error_signal = pyqtSignal(object)
-    speed_signal = pyqtSignal(float)
+    speed_signal = pyqtSignal(object)
 
     def __init__(self):
         super().__init__()
         self.loop_flag = True
         self.initialized = False
-        self.motor = None  # type: ignore
+        self.motor: MotorBase = None  # type: ignore
         self.command_queue = Queue()
 
     def run(self):
@@ -46,8 +47,8 @@ class MotorWorker(QThread):
         except Empty:
             pass
 
-    def initialize_motor(self, motor_config):
-        self.motor = EPOS({})
+    def initialize_motor(self, motor_type: str):
+        self.motor = get_supported_motor(motor_type)
         self.initialized = True
         self.enable()
 
@@ -60,12 +61,6 @@ class MotorWorker(QThread):
     def set_speed(self, speed):
         self.motor.set_speed(speed)
 
-    def step_forward(self, move):
-        self.motor.step_forward(move)
-
-    def move_side_motors(self, position):
-        self.motor.move_side_motors(position)
-
     def read_speed(self):
         speed = self.motor.get_velocity()
         self.speed_signal.emit(speed)
@@ -73,11 +68,7 @@ class MotorWorker(QThread):
     def stop(self):
         self.motor.stop()
 
-    def soft_stop(self):
-        self.motor.soft_stop()
-
-    def disconnect(self):
+    def close_connection(self):
         self.initialized = False
-        self.motor.soft_stop()
         self.motor.disable()
         self.motor.disconnect()

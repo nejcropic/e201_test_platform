@@ -1,9 +1,10 @@
 import numpy as np
 from pathlib import Path
-import pyqtgraph as pg
+import pyqtgraph as pg  # type: ignore
 from PyQt5 import QtGui
 from e201_gui.helpers.plot_analysis import PlotAnalysis
 from e201_gui.gui.position_buffer import PositionBuffer
+from e201_gui.helpers.encoder_analysis import EncoderAnalysis
 
 
 class LivePlot:
@@ -11,7 +12,7 @@ class LivePlot:
         self.parent = parent
         self.ui = parent.ui
         self.buffer = PositionBuffer()
-        self.buffer_size = 1000
+        self.buffer_size = self.ui.plot_buffer_size.value()
         self.error_offset = 0.0
         self._last_error = 0.0
         self.offset_samples_needed = 200  # averaging window
@@ -24,6 +25,7 @@ class LivePlot:
         self.plot_units = "DEG"
         self.last_sample = None
         self._last_status = None
+        self.resolution = 360
 
         self.plot_widget = pg.GraphicsLayoutWidget()
         self.plot_widget.setBackground("w")
@@ -37,9 +39,9 @@ class LivePlot:
         self.ref_curve_angle = self.position_plot.plot(pen=pg.mkPen(color=(0, 200, 0), width=2), name="Reference [deg]")
         self.dut_curve_angle = self.position_plot.plot(pen=pg.mkPen(color=(200, 0, 0), width=2), name="DUT [deg]")
         self.ref_curve_counts = self.position_plot.plot(
-            pen=pg.mkPen(color=(0, 0, 200), width=2), name="Reference [counts]"
+            pen=pg.mkPen(color=(0, 200, 0), width=2), name="Reference [counts]"
         )
-        self.dut_curve_counts = self.position_plot.plot(pen=pg.mkPen(color=(255, 255, 0), width=2), name="DUT [counts]")
+        self.dut_curve_counts = self.position_plot.plot(pen=pg.mkPen(color=(200, 0, 0), width=2), name="DUT [counts]")
 
         # ===== Error Plot =====
         self.plot_widget.nextRow()
@@ -70,10 +72,13 @@ class LivePlot:
         self.saving_path = Path("saved_plots")
         self.saving_path.mkdir(exist_ok=True)
 
-    def set_plotting_mode(self, analysis_mode: str, positions_mode: str, units: str):
+        self.encoder_analysis = EncoderAnalysis()
+
+    def set_plotting_mode(self, analysis_mode: str, positions_mode: str, units: str, noise_show: str):
         self.analysis_mode = analysis_mode
         self.positions_mode = positions_mode
         self.plot_units = units
+        self.noise_show = noise_show
 
         err_unit = "Counts" if analysis_mode == "Noise" else "Degrees"
         if analysis_mode == "Noise":
@@ -98,7 +103,8 @@ class LivePlot:
         err = snap["err_deg"]
         inl = snap["inl_deg"]
         dnl = snap["dnl_deg"]
-        noise = snap["noise"]
+        noise_dut = snap["noise_dut"]
+        noise_ref = snap["noise_ref"]
 
         # plot visibility
         show_deg = self.plot_units == "Degrees"
@@ -123,20 +129,23 @@ class LivePlot:
         self.err_curve.setData(x, err)
         self.inl_curve.setData(x, inl)
         self.dnl_curve.setData(x, dnl)
-        self.noise_curve.setData(x, noise)
+
+        if self.noise_show == "DUT":
+            self.noise_curve.setData(x, noise_dut)
+            noise_abs = np.abs(noise_dut)
+        else:
+            self.noise_curve.setData(x, noise_ref)
+            noise_abs = np.abs(noise_ref)
 
         # axis scaling
         if self.plot_units == "Degrees":
             self.position_plot.setYRange(0, 360)
+        else:
+            self.position_plot.setYRange(0, self.resolution)
 
         if self.analysis_mode == "Noise":
-            ymax = np.percentile(np.abs(noise), 95)
+            ymax = np.percentile(np.abs(noise_abs), 95)
             ymax = max(ymax, 2.0)
-            self.analysis_plot.setYRange(-ymax, ymax)
-
-        elif self.analysis_mode == "DNL":
-            ymax = np.percentile(np.abs(dnl), 95)
-            ymax = max(ymax, 0.0001)
             self.analysis_plot.setYRange(-ymax, ymax)
 
         else:
@@ -145,8 +154,8 @@ class LivePlot:
             self.analysis_plot.setYRange(-ymax, ymax)
 
         # stats
-        p2p = np.max(err) - np.min(err)
-        rms = np.sqrt(np.mean(err**2))
+        p2p, rms = self.encoder_analysis.compute_metrics(err)
+        _, stdev = self.encoder_analysis.compute_noise(dut_counts)
 
         try:
             latest = self.parent.acquisition_worker.latest_sample
@@ -159,6 +168,7 @@ class LivePlot:
                     "status": latest.get("status"),
                     "p2p": float(p2p),
                     "rms": float(rms),
+                    "stdev": float(stdev),
                     "multiturn": latest.get("multiturn"),
                 }
             )
@@ -167,13 +177,15 @@ class LivePlot:
 
     def update_ui(self, d):
         round_pos = 5
-        self.ui.dut_counts_label.setText(f"DUT counts: {d['dut_counts']}")
-        self.ui.dut_position_label.setText(f"DUT position [deg]: {d['dut_scaled']:.{round_pos}f}")
+        self.ui.dut_counts_label.setText(f"DUT [counts]: {d['dut_counts']}")
+        self.ui.dut_position_label.setText(f"DUT [deg]: {d['dut_scaled']:.{round_pos}f}")
 
-        self.ui.ref_counts_label.setText(f"REF counts: {d['ref_counts']}")
-        self.ui.ref_position_label.setText(f"REF position [deg]: {d['ref_scaled']:.{round_pos}f}")
+        self.ui.ref_counts_label.setText(f"REF [counts]: {d['ref_counts']}")
+        self.ui.ref_position_label.setText(f"REF [deg]: {d['ref_scaled']:.{round_pos}f}")
 
         self.ui.p2p_error_label.setText(f"P2P: {d.get('p2p'):.{round_pos}f} [deg]")
+        self.ui.stdev_noise_label.setText(f"Noise P2P (6σ): {d.get('stdev'):.{round_pos}f} [counts]")
+        self.ui.rms_error_label.setText(f"RMS: {d.get('rms'):.{round_pos}f} [deg]")
 
         mt = d.get("multiturn")
         if mt is None:
@@ -217,6 +229,7 @@ class LivePlot:
                 [
                     [
                         d["x"],
+                        d["ts"],
                         d["ref_counts"],
                         d["dut_counts"],
                         d["ref_deg"],
@@ -227,14 +240,18 @@ class LivePlot:
             )
 
             x = arr[:, 0]
-            ref_counts = arr[:, 1]
-            dut_counts = arr[:, 2]
-            ref_scaled = arr[:, 3]
-            dut_scaled = arr[:, 4]
+            ts = arr[:, 1]
+            ref_counts = arr[:, 2]
+            dut_counts = arr[:, 3]
+            ref_scaled = arr[:, 4]
+            dut_scaled = arr[:, 5]
+
+            self.save_to_csv(arr, plot_name)
 
             noise_analyse = True if self.ui.analysis_type_combobox.currentText() == "Noise" else False
             worker = PlotAnalysis(
                 x=x,
+                ts=ts,
                 ref_scaled=ref_scaled,
                 dut_scaled=dut_scaled,
                 ref_counts=ref_counts,
@@ -246,9 +263,26 @@ class LivePlot:
 
             self.parent.plot_workers.append(worker)
 
-            worker.finished_signal.connect(lambda msg, w=worker: self.parent.on_plot_finished(w, msg))
+            worker.finished_signal.connect(lambda msg, w=worker: self.on_plot_finished(w, msg))
 
             worker.start()
 
         else:
             print("No data recorded!")
+
+    def on_plot_finished(self, worker, msg):
+        worker.quit()
+        worker.wait()
+        self.parent.plot_workers.remove(worker)
+
+    def save_to_csv(self, arr, plot_name):
+        # Save raw data to CSV
+        csv_path = self.saving_path / f"{plot_name}_raw.csv"
+
+        np.savetxt(
+            csv_path,
+            arr,
+            delimiter=",",
+            header="sample_idx,timestamp,ref_counts,dut_counts,ref_deg,dut_deg",
+            comments="",
+        )

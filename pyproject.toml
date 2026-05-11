@@ -4,23 +4,34 @@ build-backend = "uv_build"
 
 [project]
 name = "e201-gui"
-version = "0.1.0"
+version = "1.0.0"
 description = "Testing platform to test encoders with E201 interface"
 readme = "README.md"
 authors = [
-    { name = "ropic", email = "nejc.ropic@gmail.com" }
+    { name = "Nejc Ropič", email = "nejc.ropic@gmail.com" }
 ]
-requires-python = ">=3.11"
+requires-python = ">=3.11, <3.12"
 dependencies = [
     "numpy>=2.4.2",
     "pyqt5>=5.15.11",
     "pyserial>=3.5",
     "pyqtgraph",
+    "PyYAML",
+    "types-PyYAML",
     "matplotlib>=3.10.8",
-    "letp-e2019<=1.0.0",
-    "letp-parsers<=1.0.0",
+    "letp-parsers >=1.0.3,<2.0.0",
+    "letp-e2019 >=1.1.0,<2.0.0",
 ]
 
+[tool.uv.workspace]
+members = [
+    "packages/letp-e2019",
+    "packages/letp-parsers",
+]
+
+[tool.uv.sources]
+letp-e2019 = {workspace = true}
+letp-parsers = {workspace = true}
 
 [tool.uv]
 native-tls = true
@@ -29,22 +40,14 @@ required-environments = [
 ]
 
 [project.scripts]
-e201 = "e201_gui.main:main"
+gui = "e201_gui.main:main"
 
-[tool.uv.workspace]
-members = [
-    "packages/letp-e2019",
-    "packages/letp-parsers",
-]
-
-
-[tool.uv.sources]
-letp-e2019 = { workspace = true }
-letp-parsers = { workspace = true }
-
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.black]
 line-length = 120
 
 [tool.ruff]
 line-length = 120
+
