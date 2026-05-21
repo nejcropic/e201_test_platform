@@ -20,6 +20,8 @@ class AcquisitionWorker(QThread):
     error_signal = pyqtSignal(object)
     miss_image_signal = pyqtSignal(object)
     recording_finished_signal = pyqtSignal(object)
+    sample_rate_signal = pyqtSignal(float)
+    acquired_data_signal = pyqtSignal(int)
 
     def __init__(self, buffer, parser):
         super().__init__()
@@ -56,6 +58,9 @@ class AcquisitionWorker(QThread):
         self.recorded_data = []
         self.recording_length = 0
 
+        self._rate_counter = 0
+        self._rate_timer = time.perf_counter()
+        self.sample_rate = 0.0
         self._err_counter = 0
 
         self.invert_dut = False
@@ -119,14 +124,31 @@ class AcquisitionWorker(QThread):
                         "dut_deg": processed["dut_deg"],
                     }
                 )
+                if len(self.recorded_data) % 1000 == 0:
+                    self.acquired_data_signal.emit(len(self.recorded_data))
+
                 if len(self.recorded_data) >= self.recording_length or self.recording_stop:
+                    self.acquired_data_signal.emit(len(self.recorded_data))
                     self.recording = False
                     self.recording_stop = False
                     self.recording_finished_signal.emit(False)
 
-            self.last_position: dict = parsed.copy()
+            self.last_position = parsed.copy()
             self.latest_sample = processed
             self.sample_index += 1
+
+            self._rate_counter += 1
+
+            now = time.perf_counter()
+            elapsed = now - self._rate_timer
+
+            if elapsed >= 0.5:
+                self.sample_rate = self._rate_counter / elapsed
+                self.sample_rate_signal.emit(self.sample_rate)
+
+                self._rate_counter = 0
+                self._rate_timer = now
+
             self._err_counter = 0
 
         except Exception as e:

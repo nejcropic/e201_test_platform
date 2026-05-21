@@ -83,7 +83,22 @@ class E201TestPlatform(QtWidgets.QMainWindow):
         self.acquisition_worker.device_info_signal.connect(self.handle_e201_info)
         self.acquisition_worker.miss_image_signal.connect(self.plot_miss_image)
         self.acquisition_worker.recording_finished_signal.connect(self.on_recording)
+        self.acquisition_worker.sample_rate_signal.connect(self.update_sample_rate)
+        self.acquisition_worker.acquired_data_signal.connect(self.update_acquired_samples)
         self.acquisition_worker.start()
+
+    @pyqtSlot(int)
+    def update_acquired_samples(self, samples):
+        self.ui.acquired_samples.setText(f"ACQUIRED SAMPLES: {samples}")
+
+    @pyqtSlot(float)
+    def update_sample_rate(self, rate):
+        if rate >= 1000:
+            text = f"{rate / 1000:.1f} kHz"
+        else:
+            text = f"{rate:.0f} Hz"
+
+        self.ui.sample_rate_label.setText(text)
 
     @pyqtSlot(object)
     def handle_e201_info(self, e201_info):
@@ -134,6 +149,7 @@ class E201TestPlatform(QtWidgets.QMainWindow):
     @pyqtSlot(object)
     def on_recording(self, recording_state):
         if recording_state:
+            self.ui.acquired_samples.setText("ACQUIRED SAMPLES: ----")
             self.ui.start_recording.setDisabled(True)
             self.ui.sampling_indicator.setText("● RECORDING...")
             self.ui.sampling_indicator.setStyleSheet("QLabel {color: #C62828; font-weight: 600;}")

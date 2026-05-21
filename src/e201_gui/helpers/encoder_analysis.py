@@ -85,7 +85,7 @@ class Plotter:
             y_data=[scaled_ref, scaled_pos],
             label=["Reference [deg]", "DUT [deg]"],
             title="Encoder_position",
-            x_label="Sample Index",
+            x_label="Reference Position [deg]",
             y_label="Position [deg]",
             saving_path=self.saving_path / f"{self.plot_name}_position.png",
         )
@@ -96,7 +96,7 @@ class Plotter:
             y_data=[error],
             label=["Error [deg]"],
             title=f"Encoder Error (P2P={p2p:.3f}°, RMS={rms:.3f}°)",
-            x_label="Sample Index",
+            x_label="Reference Position [deg]",
             y_label="Error [deg]",
             saving_path=self.saving_path / f"{self.plot_name}_analysis.png",
         )

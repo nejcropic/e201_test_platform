@@ -28,6 +28,7 @@ class PlotControl:
         self.parent.live_plot.buffer_size = buffer
 
     def on_plot_save(self):
+        self.ui.acquired_samples.setText("ACQUIRED SAMPLES: ----")
         self.parent.live_plot.save_plot()
 
     def record_data_continuously(self, check_state):
