@@ -3,10 +3,10 @@ from e201_gui.motor_drivers.motor_base import MotorBase
 
 
 class EPOS(MotorBase):
-    gear_ratio = 3
     steps_per_rotation = 4000
 
-    def __init__(self):
+    def __init__(self, gear_ratio: int):
+        self.gear_ratio = gear_ratio
         self.motor = EPOSMotor(acceleration=1000)
         self.enable_profile_velocity_mode()
 

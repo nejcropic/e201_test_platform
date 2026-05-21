@@ -1,5 +1,6 @@
 from e201_gui.gui.auxiliary import Auxiliary
 from e201_gui.gui.device_handling import DeviceHandling
+from e201_gui.gui.live_plot import LivePlot
 from e201_gui.gui.plot_control import PlotControl
 
 
@@ -10,7 +11,9 @@ class ConnectElements:
         self.auxiliary: Auxiliary = parent.auxiliary
         self.device_handling: DeviceHandling = parent.device_handling
         self.plot_control: PlotControl = parent.plot_control
+        self.live_plot: LivePlot = parent.live_plot
 
+        self.ui.clear_error.clicked.connect(self.auxiliary.clear_error)
         self.connect_dut_elements()
         self.register_access_elements()
         self.connect_plot_control_elements()
@@ -18,6 +21,7 @@ class ConnectElements:
         self.power_elements()
 
     def connect_dut_elements(self):
+        self.ui.get_e201_info.clicked.connect(self.device_handling.get_e201_info)
         self.ui.update_parser_button.clicked.connect(self.auxiliary.update_parser)
         self.ui.dut_comport_connect.clicked.connect(self.device_handling.connect_dut)
         self.ui.ref_comport_connect.clicked.connect(self.device_handling.connect_ref)
@@ -52,6 +56,7 @@ class ConnectElements:
         self.ui.save_plot_button.clicked.connect(self.plot_control.on_plot_save)
         self.ui.record_data_checkbox.clicked.connect(self.plot_control.record_data_continuously)
         self.ui.start_recording.clicked.connect(self.plot_control.record_data_defined_samples)
+        self.ui.open_index_plot.clicked.connect(self.live_plot.open_index_plot)
 
     def power_elements(self):
         self.ui.dut_power_on.clicked.connect(self.device_handling.dut_power_on)
@@ -64,7 +69,10 @@ class ConnectElements:
     def connect_motor_elements(self):
         self.ui.motor_connect_button.clicked.connect(self.parent.manual_motor.initialize_motor)
         self.ui.set_speed_button.clicked.connect(
-            lambda: self.parent.manual_motor.call_motor_function("set_speed", self.ui.speed_set.value())
+            lambda: self.parent.manual_motor.call_motor_function(
+                "set_speed",
+                self.ui.speed_set.value(),
+            )
         )
         self.ui.stop_button.clicked.connect(lambda: self.parent.manual_motor.call_motor_function("stop"))
         self.ui.enable_motor_checkbox.clicked.connect(self.parent.manual_motor.on_enable_motor)

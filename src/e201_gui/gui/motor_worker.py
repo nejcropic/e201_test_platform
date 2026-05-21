@@ -1,4 +1,3 @@
-import traceback
 from queue import Queue, Empty
 from PyQt5.QtCore import QThread, pyqtSignal
 from e201_gui.motor_drivers.motor_base import MotorBase
@@ -6,7 +5,6 @@ from e201_gui.motor_drivers.supported_motors import get_supported_motor
 
 
 class MotorWorker(QThread):
-    finished_signal = pyqtSignal(object)
     error_signal = pyqtSignal(object)
     speed_signal = pyqtSignal(object)
 
@@ -23,9 +21,8 @@ class MotorWorker(QThread):
                 self._loop_iteration()
                 self.msleep(1)
         except Exception as e:
-            self.error_signal.emit([e, traceback.format_exc()])
-        finally:
-            self.finished_signal.emit()
+            err = f"{type(e).__name__}: {e}"
+            self.error_signal.emit(err)
 
     def enqueue_command(self, command: str, *args):
         self.command_queue.put((command, args))
@@ -47,8 +44,8 @@ class MotorWorker(QThread):
         except Empty:
             pass
 
-    def initialize_motor(self, motor_type: str):
-        self.motor = get_supported_motor(motor_type)
+    def initialize_motor(self, motor_type: str, gear_ratio: int):
+        self.motor = get_supported_motor(motor_type, gear_ratio)
         self.initialized = True
         self.enable()
 

@@ -30,9 +30,9 @@ class Auxiliary:
         if any(self.available_e201):
             for device in self.available_e201:
                 if device.e2019_type == self.ui.dut_type_groupbox.currentText():
-                    self.ui.dut_comport_combobox.addItem(f"{device.e2019_comport}")
+                    self.ui.dut_comport_combobox.addItem(f"{device.e2019_comport} - {device.e2019_serial}")
                 if device.e2019_type == self.ui.ref_type_groupbox.currentText():
-                    self.ui.ref_comport_combobox.addItem(f"{device.e2019_comport}")
+                    self.ui.ref_comport_combobox.addItem(f"{device.e2019_comport} - {device.e2019_serial}")
 
         self.ui.dut_comport_combobox.addItem("None")
         self.ui.ref_comport_combobox.addItem("None")
@@ -52,7 +52,7 @@ class Auxiliary:
             "polarity": self.ui.dut_polarity.value(),
             "phase": self.ui.dut_phase.value(),
             "frequency": self.ui.dut_frequency.value(),
-            "is_rotary": self.ui.application_type_combobox.currentText() == "Rotary",
+            "is_rotary": True,
         }
 
     def get_ref_parameters(self):
@@ -123,6 +123,7 @@ class Auxiliary:
         dut_set = settings.get("dut_settings")
         ref_set = settings.get("ref_settings")
         # DUT
+        self.ui.dut_communication_combobox.setCurrentText(dut_set.get("communication").upper())
         self.ui.dut_counts_rev.setValue(dut_set.get("resolution"))
         self.ui.dut_singleturn_bits.setValue(dut_set.get("singleturn_bits"))
         self.ui.dut_multiturn_bits.setValue(dut_set.get("multiturn_bits"))
@@ -141,3 +142,6 @@ class Auxiliary:
         encoder_data = {"dut_settings": self.get_dut_parameters(), "ref_settings": self.get_ref_parameters()}
 
         save_to_yaml(encoder_data, self.parent.last_settings_filename)
+
+    def clear_error(self):
+        self.ui.error_log.setText("--")

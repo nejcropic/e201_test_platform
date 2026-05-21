@@ -10,11 +10,13 @@ class ManualMotor:
 
     def initialize_motor(self):
         motor_type = self.ui.supported_motors.currentText()
+        gear_ratio = self.ui.gear_ratio.value()
         if not self.parent.motor_worker.initialized:
             try:
-                self.parent.motor_worker.initialize_motor(motor_type)
+                self.parent.motor_worker.initialize_motor(motor_type, gear_ratio)
                 self.ui.debug_motor_widget.setDisabled(False)
                 self.ui.motor_connect_button.setText("DISCONNECT")
+                self.ui.enable_motor_checkbox.setChecked(True)
 
             except Exception as e:
                 tb = traceback.format_exc()

@@ -41,6 +41,9 @@ class Master(E2019Synced):
             )
             self.dut.set_word_width(frame_length)  # type: ignore
 
+        if self.dut.__class__.__name__ == "E2019Q":
+            self.dut.bytes = config["dut_bytes"]
+
     def set_register_access(self, params: dict):
         self.register_access = self._load_reg_acc_params(params)
 

@@ -1,6 +1,6 @@
 import time
 
-from queue import Queue, Empty
+from queue import Queue
 from PyQt5.QtCore import QThread, pyqtSignal
 from e201_gui.e201_drivers.master import Master
 from e201_gui.e201_drivers.parser import Parser
@@ -14,9 +14,10 @@ class AcquisitionWorker(QThread):
     If device is not connected or read fails -> value is None.
     """
 
+    device_info_signal = pyqtSignal(object)
     finished_signal = pyqtSignal()
     register_response_signal = pyqtSignal(object)
-    error_response_signal = pyqtSignal(object)
+    error_signal = pyqtSignal(object)
     miss_image_signal = pyqtSignal(object)
     recording_finished_signal = pyqtSignal(object)
 
@@ -71,7 +72,7 @@ class AcquisitionWorker(QThread):
                     time.sleep(sleep_time)
         except Exception as e:
             err = f"{type(e).__name__}: {e}"
-            self.error_response_signal.emit(err)
+            self.error_signal.emit(err)
 
     def _loop_iteration(self):
         self._handle_commands()
@@ -86,7 +87,6 @@ class AcquisitionWorker(QThread):
         try:
             frame = self.master.read_position()
             parsed = self.parser.parse_position(frame)
-
             processed = self._compute_processed_sample(parsed)
 
             self.buffer.append(
@@ -94,6 +94,8 @@ class AcquisitionWorker(QThread):
                 ts=processed["ts"],
                 dut_counts=processed["dut_counts"],
                 ref_counts=processed["ref_counts"],
+                dut_index=processed["dut_index"],
+                ref_index=processed["ref_index"],
                 dut_deg=processed["dut_deg"],
                 ref_deg=processed["ref_deg"],
                 err_deg=processed["err_deg"],
@@ -111,6 +113,8 @@ class AcquisitionWorker(QThread):
                         "ts": processed["ts"],
                         "ref_counts": processed["ref_counts"],
                         "dut_counts": processed["dut_counts"],
+                        "dut_index": processed["dut_index"],
+                        "ref_index": processed["ref_index"],
                         "ref_deg": processed["ref_deg"],
                         "dut_deg": processed["dut_deg"],
                     }
@@ -129,7 +133,7 @@ class AcquisitionWorker(QThread):
             self._err_counter += 1
             if 3 <= self._err_counter < 4:
                 err = f"{type(e).__name__}: {e}"
-                self.error_response_signal.emit(err)
+                self.error_signal.emit(err)
 
     @staticmethod
     def _wrap_error_deg(err):
@@ -139,6 +143,8 @@ class AcquisitionWorker(QThread):
         dut_counts = int(parsed["Position"])
         ref_counts = int(parsed["Reference"])
         ts = float(parsed["Timer"])
+        dut_index = int(parsed.get("DUT_Index", 0))
+        ref_index = int(parsed.get("REF_Index", 0))
 
         if self.invert_dut:
             dut_counts = (-dut_counts) % self.parser.dut_settings["resolution"]
@@ -176,6 +182,8 @@ class AcquisitionWorker(QThread):
             "ts": ts,
             "dut_counts": dut_counts,
             "ref_counts": ref_counts,
+            "ref_index": ref_index,
+            "dut_index": dut_index,
             "dut_deg": dut_deg,
             "ref_deg": ref_deg,
             "err_deg": err_deg,
@@ -194,13 +202,9 @@ class AcquisitionWorker(QThread):
         try:
             command, args = self.command_queue.get_nowait()
             if not command.startswith("connect"):
-                if command.startswith("ref") and self.master.ref is None:
-                    self.error_response_signal.emit("REF not connected!")
+                if "ref" not in command and self.master.dut is None and command != "get_e201_info":
+                    self.error_signal.emit("DUT not connected!")
                     return
-                else:
-                    if self.master.dut is None:
-                        self.error_response_signal.emit("DUT not connected!")
-                        return
 
             command = getattr(self, command)
             response = command(*args)
@@ -210,7 +214,7 @@ class AcquisitionWorker(QThread):
                         "response": response,
                     }
                 )
-        except Empty:
+        except Exception:
             pass
 
     def connect_dut(self, e201_type, port):
@@ -235,9 +239,10 @@ class AcquisitionWorker(QThread):
         if self.master.dut is not None:
             self.master.enable_synced_sampling()
         else:
-            self.master.disable_synced_sampling()
+            self.master.ref.disable_trigger()  # type: ignore
 
     def set_dut_communication(self, config):
+
         self.master.initialize_device(config)
 
     def enable_synced_sampling(self):
@@ -247,6 +252,9 @@ class AcquisitionWorker(QThread):
         self.master.disable_synced_sampling()
 
     def read_dut_register(self, bank: int, address: int | str, length: int, signed):
+        if self.master.dut is None:
+            self.error_signal.emit("DUT not connected!")
+            return
         resp = self.master.read_registers(bank, address, length, signed)
         self.register_response_signal.emit(resp)
 
@@ -282,12 +290,19 @@ class AcquisitionWorker(QThread):
         self.master.dut.power_on(voltage)
 
     def ref_power_on(self, voltage):
+        if self.master.ref is None:
+            self.error_signal.emit("REF not connected!")
+            return
         self.master.ref.power_on(voltage)  # type: ignore
 
     def dut_power_off(self):
         self.master.dut.power_off()
 
     def ref_power_off(self):
+        if self.master.ref is None:
+            self.error_signal.emit("REF not connected!")
+            return
+
         self.master.ref.power_off()  # type: ignore
 
     def dut_power_cycle(self, voltage):
@@ -295,18 +310,47 @@ class AcquisitionWorker(QThread):
         self.master.dut.power_on(voltage)
 
     def ref_power_cycle(self, voltage):
+        if self.master.ref is None:
+            self.error_signal.emit("REF not connected!")
+            return
         self.master.ref.power_off()  # type: ignore
         self.master.ref.power_on(voltage)  # type: ignore
 
+    def get_e201_info(self):
+        e201_info = {}
+        if self.master.dut is not None:
+            dut_info = {
+                "power_supply": self.master.dut.get_supply(),
+                "serial_number": self.master.dut.get_serial_number(),
+                "software_version": self.master.dut.get_version(),
+                "build_number": self.master.dut.get_build_number(),
+            }
+            e201_info["dut"] = dut_info
+
+        if self.master.ref is not None:
+            ref_info = {
+                "power_supply": self.master.ref.get_supply(),
+                "serial_number": self.master.ref.get_serial_number(),
+                "software_version": self.master.ref.get_version(),
+                "build_number": self.master.ref.get_build_number(),
+            }
+            e201_info["ref"] = ref_info
+
+        self.device_info_signal.emit(e201_info)
+
     def close_dut(self):
-        if self.master.dut._trigger_enabled:
-            self.master.disable_synced_sampling()
+        if self.master.ref is not None:
+            self.master.ref.disable_trigger()
 
         self.master.close_dut()
 
     def close_ref(self):
-        if self.master.ref._trigger_enabled:  # type: ignore
-            self.master.disable_synced_sampling()
+        if self.master.ref is None:
+            self.error_signal.emit("REF not connected!")
+            return
+
+        if self.master.dut is not None:
+            self.master.dut.disable_trigger()
 
         self.master.close_ref()
 

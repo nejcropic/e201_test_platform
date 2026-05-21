@@ -11,6 +11,8 @@ class PositionBuffer:
         # raw
         self.ref_counts = np.zeros(size, dtype=np.uint32)
         self.dut_counts = np.zeros(size, dtype=np.int32)
+        self.ref_index = np.zeros(size, dtype=np.uint32)
+        self.dut_index = np.zeros(size, dtype=np.uint32)
         self.ts = np.zeros(size, dtype=np.float64)
         self.sample_idx = np.zeros(size, dtype=np.int64)
 
@@ -32,6 +34,8 @@ class PositionBuffer:
         ts: float,
         dut_counts: int,
         ref_counts: int,
+        dut_index: int,
+        ref_index: int,
         dut_deg: float,
         ref_deg: float,
         err_deg: float,
@@ -48,7 +52,8 @@ class PositionBuffer:
             self.ts[i] = ts
             self.dut_counts[i] = dut_counts
             self.ref_counts[i] = ref_counts
-
+            self.dut_index[i] = dut_index
+            self.ref_index[i] = ref_index
             self.dut_deg[i] = dut_deg
             self.ref_deg[i] = ref_deg
             self.err_deg[i] = err_deg
@@ -76,6 +81,8 @@ class PositionBuffer:
                 "ts": self.ts[indices].copy(),
                 "dut_counts": self.dut_counts[indices].copy(),
                 "ref_counts": self.ref_counts[indices].copy(),
+                "dut_index": self.dut_index[indices].copy(),
+                "ref_index": self.ref_index[indices].copy(),
                 "dut_deg": self.dut_deg[indices].copy(),
                 "ref_deg": self.ref_deg[indices].copy(),
                 "err_deg": self.err_deg[indices].copy(),

@@ -2,7 +2,7 @@
 COPYRIGHT(c) 2020 RLS d.o.o, Pod vrbami 2, 1218 Komenda, Slovenia
 
 file:      e2019.py
-brief:     Base class for E2019 device communication over UART protocol.
+brief:     Base class for E2019 device communication over P911 protocol.
 author(s): Nejc Ropič
 date:      17.4.2026
 
@@ -14,8 +14,8 @@ import time
 from typing import Optional, List
 from dataclasses import dataclass
 
-import serial.tools.list_ports  # type: ignore # import serial module
-from serial.serialutil import SerialException  # type: ignore # import serial module
+import serial.tools.list_ports  # type: ignore #import serial module
+from serial.serialutil import SerialException  # type: ignore #import serial module
 
 from letp_e2019.serial_api.p91 import P911, InterfaceNotFoundException
 from letp_e2019.e2019_helpers import e2019p_errors, e2019b_errors
@@ -37,8 +37,11 @@ class E2019(P911):
 
         self._trigger_enabled = False
         self.read_command = ""
-        self.bytes = 4
+        self.bytes = 1
         self._is_master = False
+
+    def get_serial_number(self):
+        return self._serial_port.execute_command_with_response("r")
 
     def read_position(self) -> str:
         """
@@ -217,6 +220,7 @@ class E2019Power(E2019):
 class E2019Info:  # pylint: disable=missing-class-docstring
     e2019_type: str
     e2019_comport: str
+    e2019_serial: str
 
 
 def get_all_e201() -> List[E2019Info]:
@@ -228,9 +232,11 @@ def get_all_e201() -> List[E2019Info]:
             try:
                 e2019 = E2019(port.name)
                 v = e2019.get_version().strip().split(" ")[0].replace("-", "")
+                s = e2019.get_serial_number().strip()
+
                 e2019.close()
 
-                devices += [E2019Info(v, port.name)]
+                devices += [E2019Info(v, port.name, s)]
 
             except InterfaceNotFoundException:
                 pass

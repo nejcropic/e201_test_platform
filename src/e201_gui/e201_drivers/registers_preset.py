@@ -23,7 +23,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -32,7 +32,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -49,7 +49,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 0,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 1,
@@ -58,7 +58,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 4,
@@ -67,7 +67,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 4,
@@ -76,7 +76,7 @@ orbis_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 4,
@@ -160,7 +160,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -169,7 +169,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -186,7 +186,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 0,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 1,
@@ -195,7 +195,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 4,
@@ -204,7 +204,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 4,
@@ -213,7 +213,7 @@ artos_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 4,
@@ -297,7 +297,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -306,7 +306,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -323,7 +323,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 0,
@@ -332,7 +332,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 0,
@@ -341,7 +341,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 0,
@@ -350,7 +350,7 @@ aksim2_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 0,
@@ -434,7 +434,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -443,7 +443,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -460,7 +460,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 1,
@@ -469,7 +469,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 0,
@@ -478,7 +478,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 0,
@@ -487,7 +487,7 @@ aksim4_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 0,
@@ -571,7 +571,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -580,7 +580,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -597,7 +597,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 1,
@@ -606,7 +606,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 4,
@@ -615,7 +615,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 4,
@@ -624,7 +624,7 @@ asko_biss_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 4,
@@ -708,7 +708,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "detailed_status":  
+    "detailed_status":  # detailed status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -717,7 +717,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 0,
     },
-    "persistent_status":  
+    "persistent_status":  # persistent status enkoderja
     {
         "value": 0,
         "bank": 0,
@@ -734,7 +734,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "start_calibration":  
+    "start_calibration":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0x41,
         "bank": 1,
@@ -743,7 +743,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_increment":  
+    "self_cal_increment":  # register self-calibration bitov, ki se inkrementirata po samokalibraciji
     {
         "value": 0,
         "bank": 4,
@@ -752,7 +752,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_status":  
+    "self_cal_status":  # self-calibration status register
     {
         "value": 0,
         "bank": 4,
@@ -761,7 +761,7 @@ asko_encolink_preset = {
         "is_signed": 0,
         "execute": 1,
     },
-    "self_cal_ring_ecc":  
+    "self_cal_ring_ecc":  # ring eccentricity shift
     {
         "value": 0,
         "bank": 4,

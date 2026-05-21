@@ -33,11 +33,11 @@ class E2019Synced:
     def __init__(self, config: dict):
         self._validate_config(config)
 
-        self.dut: E2019 | None = None  # type: ignore 
+        self.dut: E2019
         self.ref: E2019 | None = None  # type: ignore
 
-        self.dut = self._init_device(config["e201_dut"], role="DUT") 
-        self.ref = self._init_device(config["e201_ref"], role="REF") 
+        self.dut = self._init_device(config["e201_dut"], role="DUT")
+        self.ref = self._init_device(config["e201_ref"], role="REF")  # type: ignore
 
     def _validate_config(self, config: dict) -> None:
         """Config dictionary validation"""

@@ -150,6 +150,12 @@ requires-dist = [{ name = "pyserial" }]
 name = "letp-parsers"
 version = "1.0.3"
 source = { editable = "packages/letp-parsers" }
+dependencies = [
+    { name = "numpy" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "numpy" }]
 
 [[package]]
 name = "matplotlib"

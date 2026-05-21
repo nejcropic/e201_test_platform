@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1407</width>
+    <width>1466</width>
     <height>917</height>
    </rect>
   </property>
@@ -33,6 +33,12 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>800</height>
+    </size>
+   </property>
    <property name="font">
     <font>
      <family>Segoe UI</family>
@@ -42,7 +48,8 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">/* === BUTTON STYLES === */
+    <string notr="true">
+/* === BUTTON STYLES === */
 QPushButton {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
                                 stop:0 #ff6600, stop:1 #ff5000);
@@ -73,20 +80,25 @@ QPushButton:pressed {
      <number>0</number>
     </property>
     <property name="rightMargin">
-     <number>0</number>
+     <number>5</number>
     </property>
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="0" column="4">
-     <widget class="QFrame" name="verticalFrame">
+    <item row="1" column="2">
+     <widget class="QWidget" name="widget_14" native="true">
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
-        <height>900</height>
+        <width>260</width>
+        <height>16777215</height>
        </size>
       </property>
-      <layout class="QGridLayout" name="gridLayout_23">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+       </font>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_20">
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -99,1045 +111,13 @@ QPushButton:pressed {
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item row="2" column="0">
-        <widget class="QWidget" name="widget_22" native="true">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>180</height>
-          </size>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_36">
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>9</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item row="0" column="1" rowspan="2">
-           <widget class="QGroupBox" name="groupBox_5">
-            <property name="minimumSize">
-             <size>
-              <width>350</width>
-              <height>180</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>1666</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="title">
-             <string>LIVE VALUES</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_21">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>3</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <item row="3" column="1">
-              <widget class="QLabel" name="stdev_noise_label">
-               <property name="minimumSize">
-                <size>
-                 <width>150</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Noise P2P [6σ]: -- </string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QLabel" name="p2p_error_label">
-               <property name="minimumSize">
-                <size>
-                 <width>150</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Error P2P [deg]: --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="ref_counts_label">
-               <property name="maximumSize">
-                <size>
-                 <width>180</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>REF [counts]:  --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="multiturn_label">
-               <property name="minimumSize">
-                <size>
-                 <width>150</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>100</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Multiturn: --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="5" column="0" colspan="2">
-              <widget class="QWidget" name="widget_30" native="true">
-               <layout class="QGridLayout" name="gridLayout_25">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="dut_status_label">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>150</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>12</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLabel {
-    background-color: grey;     
-    color: white;
-   border-radius: 10px;
-}
-</string>
-                  </property>
-                  <property name="text">
-                   <string>STATUS: 0</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="dut_counts_label">
-               <property name="maximumSize">
-                <size>
-                 <width>180</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>DUT [counts]: --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="1">
-              <widget class="QLabel" name="rms_error_label">
-               <property name="minimumSize">
-                <size>
-                 <width>150</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Error RMS [deg]: --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="2" column="0">
-              <widget class="QLabel" name="dut_position_label">
-               <property name="maximumSize">
-                <size>
-                 <width>170</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>DUT [deg]: --</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0">
-              <widget class="QLabel" name="ref_position_label">
-               <property name="maximumSize">
-                <size>
-                 <width>180</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>10</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>REF [deg]:--</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="2" rowspan="2">
-           <widget class="QGroupBox" name="groupBox_2">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="title">
-             <string>MOTOR</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_17">
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item row="0" column="0">
-              <widget class="QWidget" name="widget_11" native="true">
-               <layout class="QGridLayout" name="gridLayout_16">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="1" column="0">
-                 <widget class="QPushButton" name="motor_connect_button">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>22</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>CONNECT</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QCheckBox" name="enable_motor_checkbox">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Enable</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0" colspan="2">
-                 <widget class="QComboBox" name="supported_motors">
-                  <property name="font">
-                   <font>
-                    <pointsize>9</pointsize>
-                   </font>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QFrame" name="debug_motor_widget">
-               <property name="enabled">
-                <bool>false</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>50</height>
-                </size>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_32">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QWidget" name="widget_12" native="true">
-                  <layout class="QGridLayout" name="gridLayout_19">
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_10">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>9</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>Set speed:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QSpinBox" name="speed_set">
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>9</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="suffix">
-                      <string> [rpm]</string>
-                     </property>
-                     <property name="minimum">
-                      <number>-500</number>
-                     </property>
-                     <property name="maximum">
-                      <number>500</number>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QWidget" name="widget_19" native="true">
-                  <layout class="QGridLayout" name="gridLayout_10">
-                   <property name="topMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>0</number>
-                   </property>
-                   <item row="0" column="0">
-                    <widget class="QPushButton" name="set_speed_button">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>9</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>SET SPEED</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QPushButton" name="stop_button">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>9</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>STOP</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item row="2" column="0">
-                 <widget class="QWidget" name="widget_6" native="true">
-                  <layout class="QGridLayout" name="gridLayout_9">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>0</number>
-                   </property>
-                   <property name="horizontalSpacing">
-                    <number>3</number>
-                   </property>
-                   <item row="0" column="0" alignment="Qt::AlignHCenter">
-                    <widget class="QLabel" name="label_14">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>10</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>CURRENT SPEED:</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLabel" name="current_speed_label">
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>10</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>0.00</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="2">
-                    <widget class="QLabel" name="label_13">
-                     <property name="maximumSize">
-                      <size>
-                       <width>40</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Segoe UI</family>
-                       <pointsize>10</pointsize>
-                       <weight>75</weight>
-                       <bold>true</bold>
-                      </font>
-                     </property>
-                     <property name="text">
-                      <string>RPM</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0" rowspan="2">
-           <widget class="QGroupBox" name="groupBox_8">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>260</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="title">
-             <string>DATA RECORDING</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_24">
-             <item row="0" column="1">
-              <widget class="QWidget" name="widget_32" native="true">
-               <layout class="QGridLayout" name="gridLayout_51">
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <item row="1" column="0">
-                 <widget class="QPushButton" name="start_recording">
-                  <property name="text">
-                   <string>START RECORDING</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLabel" name="sampling_indicator">
-                  <property name="styleSheet">
-                   <string notr="true">QLabel {
-color: #C62828; font-weight: 600;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
-                 <widget class="QSpinBox" name="record_samples_spinbox">
-                  <property name="prefix">
-                   <string>Samples: </string>
-                  </property>
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>1000000000</number>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="0">
-                 <widget class="QCheckBox" name="record_data_checkbox">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Record continuously</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QWidget" name="widget_31" native="true">
-               <layout class="QGridLayout" name="gridLayout_50">
-                <item row="0" column="0">
-                 <widget class="QLineEdit" name="save_plot_name">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="inputMask">
-                   <string/>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Plot name</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="save_plot_button">
-                  <property name="minimumSize">
-                   <size>
-                    <width>100</width>
-                    <height>22</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>SAVE PLOT</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="3" column="0" colspan="3">
-        <layout class="QVBoxLayout" name="plot_layout"/>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QWidget" name="widget_14" native="true">
-      <property name="maximumSize">
-       <size>
-        <width>250</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_20">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QGroupBox" name="groupBox_4">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>100</height>
-          </size>
-         </property>
+       <item row="4" column="0">
+        <spacer name="verticalSpacer">
          <property name="font">
           <font>
            <family>Segoe UI</family>
-           <pointsize>9</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
           </font>
          </property>
-         <property name="title">
-          <string>PLOT CONTROL</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_31">
-          <item row="4" column="0">
-           <widget class="QGroupBox" name="groupBox_18">
-            <property name="title">
-             <string>Analysis plot</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_30">
-             <item row="0" column="0" colspan="2">
-              <widget class="QWidget" name="widget_18" native="true">
-               <layout class="QGridLayout" name="gridLayout_38">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_20">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Type:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="analysis_type_combobox">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Error</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Noise</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>DNL</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>INL</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="4" column="0" colspan="2">
-              <widget class="QPushButton" name="zero_offset_button">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>75</weight>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>ZERO OFFSET</string>
-               </property>
-              </widget>
-             </item>
-             <item row="3" column="0" colspan="2">
-              <widget class="QWidget" name="widget_24" native="true">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>20</height>
-                </size>
-               </property>
-               <layout class="QGridLayout" name="gridLayout_39">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_15">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Show:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QComboBox" name="noise_show_combobox">
-                  <property name="enabled">
-                   <bool>false</bool>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>DUT</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>REF</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QGroupBox" name="groupBox_7">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="title">
-             <string>Position plot</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_37">
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_18">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Show:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QComboBox" name="display_show_combobox">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="currentIndex">
-                <number>1</number>
-               </property>
-               <item>
-                <property name="text">
-                 <string>DUT&amp;REF</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>DUT</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>REF</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_19">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Plot units:</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QComboBox" name="plot_units_combobox">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <item>
-                <property name="text">
-                 <string>Degrees</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Counts</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="invert_dut_direction_checkbox">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Invert DUT direction</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QSpinBox" name="plot_buffer_size">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="prefix">
-             <string>Plot buffer size:  </string>
-            </property>
-            <property name="minimum">
-             <number>100</number>
-            </property>
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-            <property name="value">
-             <number>300</number>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="constant_reading">
-            <property name="text">
-             <string>CONSTANT POSITION READING</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
@@ -1154,13 +134,13 @@ color: #C62828; font-weight: 600;
          <property name="minimumSize">
           <size>
            <width>250</width>
-           <height>50</height>
+           <height>400</height>
           </size>
          </property>
          <property name="font">
           <font>
            <family>Segoe UI</family>
-           <pointsize>9</pointsize>
+           <pointsize>10</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -1172,16 +152,20 @@ color: #C62828; font-weight: 600;
           <property name="leftMargin">
            <number>3</number>
           </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
           <property name="rightMargin">
            <number>3</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <item row="4" column="0">
            <widget class="QGroupBox" name="groupBox_16">
             <property name="font">
              <font>
+              <family>Segoe UI</family>
               <weight>75</weight>
               <bold>true</bold>
              </font>
@@ -1246,6 +230,11 @@ color: #C62828; font-weight: 600;
           </item>
           <item row="5" column="0">
            <widget class="QWidget" name="widget_16" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_49">
              <property name="leftMargin">
               <number>0</number>
@@ -1261,6 +250,13 @@ color: #C62828; font-weight: 600;
              </property>
              <item row="0" column="1">
               <widget class="QPushButton" name="read_miss_image">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>READ MISS IMAGE</string>
                </property>
@@ -1268,6 +264,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="0">
               <widget class="QPushButton" name="start_calibration">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>START CALIBRATION</string>
                </property>
@@ -1275,6 +278,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="1" column="0">
               <widget class="QPushButton" name="save_to_flash">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>SAVE TO FLASH</string>
                </property>
@@ -1282,6 +292,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="1" column="1">
               <widget class="QPushButton" name="factory_reset">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>FACTORY RESET</string>
                </property>
@@ -1295,11 +312,12 @@ color: #C62828; font-weight: 600;
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>50</height>
+              <height>80</height>
              </size>
             </property>
             <property name="font">
              <font>
+              <family>Segoe UI</family>
               <pointsize>9</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -1325,6 +343,7 @@ color: #C62828; font-weight: 600;
                </property>
                <property name="font">
                 <font>
+                 <family>Segoe UI</family>
                  <pointsize>9</pointsize>
                 </font>
                </property>
@@ -1335,6 +354,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="1" column="1">
               <widget class="QPushButton" name="set_position_offset">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>POSITION OFFSET</string>
                </property>
@@ -1350,6 +376,7 @@ color: #C62828; font-weight: 600;
                </property>
                <property name="font">
                 <font>
+                 <family>Segoe UI</family>
                  <pointsize>9</pointsize>
                 </font>
                </property>
@@ -1360,6 +387,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="0" column="1">
               <widget class="QPushButton" name="set_multiturn">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>MULTITURN SET</string>
                </property>
@@ -1367,6 +401,13 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="2" column="1">
               <widget class="QPushButton" name="set_counting_direction">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="text">
                 <string>COUNTING DIRECTION</string>
                </property>
@@ -1380,6 +421,11 @@ color: #C62828; font-weight: 600;
                  <height>22</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <property name="maximum">
                 <number>1</number>
                </property>
@@ -1390,6 +436,11 @@ color: #C62828; font-weight: 600;
           </item>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_15" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_27">
              <property name="leftMargin">
               <number>9</number>
@@ -1431,6 +482,7 @@ color: #C62828; font-weight: 600;
               <widget class="QLabel" name="label_27">
                <property name="font">
                 <font>
+                 <family>Segoe UI</family>
                  <pointsize>9</pointsize>
                 </font>
                </property>
@@ -1441,6 +493,12 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="4" column="1">
               <widget class="QSpinBox" name="register_length_spinbox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Segoe UI</family>
@@ -1467,6 +525,7 @@ color: #C62828; font-weight: 600;
               <widget class="QComboBox" name="predefined_registers">
                <property name="font">
                 <font>
+                 <family>Segoe UI</family>
                  <pointsize>9</pointsize>
                 </font>
                </property>
@@ -1504,6 +563,12 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="4" column="0">
               <widget class="QSpinBox" name="register_bank_spinbox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <family>Segoe UI</family>
@@ -1525,6 +590,11 @@ color: #C62828; font-weight: 600;
              </item>
              <item row="5" column="0" colspan="2">
               <widget class="QWidget" name="widget_29" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <layout class="QGridLayout" name="gridLayout_46">
                 <property name="topMargin">
                  <number>0</number>
@@ -1532,21 +602,6 @@ color: #C62828; font-weight: 600;
                 <property name="bottomMargin">
                  <number>0</number>
                 </property>
-                <item row="0" column="2">
-                 <widget class="QCheckBox" name="register_signed_checkbox">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Signed value</string>
-                  </property>
-                 </widget>
-                </item>
                 <item row="0" column="0">
                  <widget class="QPushButton" name="write_register_button">
                   <property name="minimumSize">
@@ -1568,6 +623,21 @@ color: #C62828; font-weight: 600;
                   </property>
                  </widget>
                 </item>
+                <item row="0" column="2">
+                 <widget class="QCheckBox" name="register_signed_checkbox">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Signed value</string>
+                  </property>
+                 </widget>
+                </item>
                 <item row="0" column="1">
                  <widget class="QPushButton" name="read_register_button">
                   <property name="minimumSize">
@@ -1586,13 +656,6 @@ color: #C62828; font-weight: 600;
                   </property>
                   <property name="text">
                    <string>READ</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0" colspan="3">
-                 <widget class="QLabel" name="register_response_status">
-                  <property name="text">
-                   <string>--</string>
                   </property>
                  </widget>
                 </item>
@@ -1627,12 +690,19 @@ color: #C62828; font-weight: 600;
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QComboBox" name="loaded_registers"/>
+              <widget class="QComboBox" name="loaded_registers">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+              </widget>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="label_16">
                <property name="font">
                 <font>
+                 <family>Segoe UI</family>
                  <pointsize>9</pointsize>
                 </font>
                </property>
@@ -1647,11 +717,796 @@ color: #C62828; font-weight: 600;
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>10</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="title">
+          <string>ENCODER SETUP</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_11">
+          <property name="topMargin">
+           <number>5</number>
+          </property>
+          <item row="2" column="0">
+           <widget class="QGroupBox" name="groupBox_3">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>9</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>REF settings</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_14">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_13" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_18">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_12">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Interpolation factor:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="ref_interpolation_factor">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>100000</number>
+                  </property>
+                  <property name="value">
+                   <number>100</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_10" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_15">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_2">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Number of periods:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="ref_number_of_periods">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>999999999</number>
+                  </property>
+                  <property name="value">
+                   <number>11840</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="update_parser_button">
+            <property name="minimumSize">
+             <size>
+              <width>190</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>190</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>UPDATE ENCODER</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QGroupBox" name="groupBox_10">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>9</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>DUT settings</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_42">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item row="8" column="0">
+              <widget class="QWidget" name="widget_28" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_44">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_24">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Frequency:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_frequency">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>85</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="suffix">
+                   <string> [kHz]</string>
+                  </property>
+                  <property name="maximum">
+                   <number>1000000000</number>
+                  </property>
+                  <property name="value">
+                   <number>1000</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QWidget" name="widget_7" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_7">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Status bits:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_status_bits">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>10000000</number>
+                  </property>
+                  <property name="value">
+                   <number>2</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QWidget" name="widget_26" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_43">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_11">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>DUT bytes:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_bytes">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>8</number>
+                  </property>
+                  <property name="value">
+                   <number>8</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QWidget" name="widget_3" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Multiturn bits:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_multiturn_bits">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>10000000</number>
+                  </property>
+                  <property name="value">
+                   <number>16</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_9" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_13">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_9">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Resolution:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_counts_rev">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>999999999</number>
+                  </property>
+                  <property name="value">
+                   <number>16384</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QWidget" name="widget_2" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Singleturn bits:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_singleturn_bits">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>10000000</number>
+                  </property>
+                  <property name="value">
+                   <number>14</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QWidget" name="widget_17" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_29">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_21">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Polarity:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_polarity">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QWidget" name="widget_8" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_12">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_8">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>CRC bits:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_crc_bits">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>10000000</number>
+                  </property>
+                  <property name="value">
+                   <number>6</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QWidget" name="widget_25" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_40">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_22">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Phase:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QSpinBox" name="dut_phase">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="maximum">
+                   <number>1</number>
+                  </property>
+                  <property name="value">
+                   <number>1</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="9" column="0" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="invert_dut_direction_checkbox">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Invert DUT direction</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QWidget" name="widget" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+       </font>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="7" column="0">
         <widget class="QGroupBox" name="groupBox_11">
          <property name="font">
           <font>
-           <family>MS Shell Dlg 2</family>
+           <family>Segoe UI</family>
            <pointsize>10</pointsize>
            <weight>75</weight>
            <bold>true</bold>
@@ -1661,6 +1516,12 @@ color: #C62828; font-weight: 600;
           <string>POWER MANAGEMENT</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_47">
+          <property name="topMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>4</number>
+          </property>
           <item row="3" column="0" alignment="Qt::AlignHCenter">
            <widget class="QPushButton" name="dut_power_cycle">
             <property name="minimumSize">
@@ -1674,6 +1535,13 @@ color: #C62828; font-weight: 600;
               <width>100</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
             </property>
             <property name="text">
              <string>POWER CYCLE</string>
@@ -1694,6 +1562,13 @@ color: #C62828; font-weight: 600;
               <height>22</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>POWER ON</string>
             </property>
@@ -1712,6 +1587,13 @@ color: #C62828; font-weight: 600;
               <width>100</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
             </property>
             <property name="text">
              <string>POWER OFF</string>
@@ -1732,6 +1614,13 @@ color: #C62828; font-weight: 600;
               <height>22</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>POWER OFF</string>
             </property>
@@ -1750,6 +1639,13 @@ color: #C62828; font-weight: 600;
               <width>100</width>
               <height>22</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
             </property>
             <property name="text">
              <string>POWER CYCLE</string>
@@ -1770,6 +1666,13 @@ color: #C62828; font-weight: 600;
               <height>22</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>POWER ON</string>
             </property>
@@ -1779,6 +1682,7 @@ color: #C62828; font-weight: 600;
            <widget class="QLabel" name="label_25">
             <property name="font">
              <font>
+              <family>Segoe UI</family>
               <pointsize>9</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -1793,6 +1697,7 @@ color: #C62828; font-weight: 600;
            <widget class="QLabel" name="label_26">
             <property name="font">
              <font>
+              <family>Segoe UI</family>
               <pointsize>9</pointsize>
               <weight>75</weight>
               <bold>true</bold>
@@ -1806,37 +1711,12 @@ color: #C62828; font-weight: 600;
          </layout>
         </widget>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QWidget" name="widget" native="true">
-      <property name="maximumSize">
-       <size>
-        <width>250</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="9" column="0">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>0</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="2" column="0">
+       <item row="4" column="0">
         <widget class="QGroupBox" name="dut_connection_groupbox">
          <property name="font">
           <font>
            <family>Segoe UI</family>
-           <pointsize>9</pointsize>
+           <pointsize>10</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -1845,120 +1725,13 @@ color: #C62828; font-weight: 600;
           <string>DUT CONNECTION</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QWidget" name="widget_4" native="true">
-            <layout class="QGridLayout" name="gridLayout_5">
-             <property name="leftMargin">
-              <number>9</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>9</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item row="0" column="2">
-              <widget class="QComboBox" name="dut_comport_combobox">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>70</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>70</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="editable">
-                <bool>false</bool>
-               </property>
-               <item>
-                <property name="text">
-                 <string>None</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QComboBox" name="dut_type_groupbox">
-               <property name="minimumSize">
-                <size>
-                 <width>70</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <item>
-                <property name="text">
-                 <string>E2019B</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>E2019P</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>E2019S</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>E2019Q</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_4">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Port:</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_27" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_45">
              <property name="topMargin">
               <number>0</number>
@@ -1966,15 +1739,25 @@ color: #C62828; font-weight: 600;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item row="0" column="0">
+             <item row="0" column="1">
               <widget class="QRadioButton" name="three_volt_button">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <property name="text">
                 <string>3.3 V</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
+             <item row="0" column="2">
               <widget class="QRadioButton" name="five_volt_button">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <property name="text">
                 <string>5V</string>
                </property>
@@ -1983,11 +1766,35 @@ color: #C62828; font-weight: 600;
                </property>
               </widget>
              </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="minimumSize">
+                <size>
+                 <width>90</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Power supply:</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
           <item row="3" column="0">
            <widget class="QWidget" name="widget_20" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_33">
              <property name="leftMargin">
               <number>9</number>
@@ -2003,6 +1810,14 @@ color: #C62828; font-weight: 600;
              </property>
              <item row="0" column="2">
               <widget class="QLabel" name="dut_connection_indication">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QLabel {
 color: #C62828; font-weight: 600;
@@ -2037,8 +1852,115 @@ color: #C62828; font-weight: 600;
             </layout>
            </widget>
           </item>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widget_4" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_5">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QComboBox" name="dut_type_groupbox">
+               <property name="minimumSize">
+                <size>
+                 <width>65</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>65</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>E2019B</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E2019P</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E2019S</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>E2019Q</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="dut_comport_combobox">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>130</width>
+                 <height>70</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="editable">
+                <bool>false</bool>
+               </property>
+               <item>
+                <property name="text">
+                 <string>None</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
           <item row="2" column="0">
            <widget class="QWidget" name="widget_21" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_34">
              <property name="leftMargin">
               <number>9</number>
@@ -2123,35 +2045,14 @@ color: #C62828; font-weight: 600;
             </layout>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QPushButton" name="set_dut_communication">
-            <property name="text">
-             <string>SET COMMUNICATION</string>
+          <item row="5" column="0">
+           <widget class="QGroupBox" name="groupBox_9">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
             </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QGroupBox" name="groupBox">
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>9</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>PARSER SETUP</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_11">
-          <property name="topMargin">
-           <number>5</number>
-          </property>
-          <item row="2" column="0">
-           <widget class="QGroupBox" name="groupBox_3">
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -2161,647 +2062,111 @@ color: #C62828; font-weight: 600;
              </font>
             </property>
             <property name="title">
-             <string>REF settings</string>
+             <string>E2019 Info</string>
             </property>
-            <layout class="QGridLayout" name="gridLayout_14">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item row="0" column="0">
-              <widget class="QWidget" name="widget_13" native="true">
-               <layout class="QGridLayout" name="gridLayout_18">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_12">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Interpolation factor:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="ref_interpolation_factor">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>100</number>
-                  </property>
-                  <property name="value">
-                   <number>100</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="1" column="0">
-              <widget class="QWidget" name="widget_10" native="true">
-               <layout class="QGridLayout" name="gridLayout_15">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_2">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Number of periods:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="ref_number_of_periods">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>11840</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QPushButton" name="update_parser_button">
-            <property name="minimumSize">
-             <size>
-              <width>190</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>190</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>UPDATE PARSER</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QGroupBox" name="groupBox_10">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="title">
-             <string>DUT settings</string>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_42">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item row="0" column="0">
-              <widget class="QWidget" name="widget_9" native="true">
-               <layout class="QGridLayout" name="gridLayout_13">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_9">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Resolution:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_counts_rev">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>16384</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="5" column="0">
-              <widget class="QWidget" name="widget_26" native="true">
-               <layout class="QGridLayout" name="gridLayout_43">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_11">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>DUT bytes:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_bytes">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="minimum">
-                   <number>1</number>
-                  </property>
-                  <property name="maximum">
-                   <number>8</number>
-                  </property>
-                  <property name="value">
-                   <number>8</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
+            <layout class="QGridLayout" name="gridLayout_50">
              <item row="2" column="0">
-              <widget class="QWidget" name="widget_3" native="true">
-               <layout class="QGridLayout" name="gridLayout_2">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_3">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Multiturn bits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_multiturn_bits">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>16</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+              <widget class="QLabel" name="label_29">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Software version:</string>
+               </property>
               </widget>
              </item>
-             <item row="7" column="0">
-              <widget class="QWidget" name="widget_25" native="true">
-               <layout class="QGridLayout" name="gridLayout_40">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_22">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Phase:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_phase">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>1</number>
-                  </property>
-                  <property name="value">
-                   <number>1</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+             <item row="2" column="1">
+              <widget class="QLabel" name="version_dut">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
               </widget>
              </item>
-             <item row="8" column="0">
-              <widget class="QWidget" name="widget_28" native="true">
-               <layout class="QGridLayout" name="gridLayout_44">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_24">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Frequency:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_frequency">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>85</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="suffix">
-                   <string> [kHz]</string>
-                  </property>
-                  <property name="maximum">
-                   <number>1000000000</number>
-                  </property>
-                  <property name="value">
-                   <number>1000</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+             <item row="1" column="1">
+              <widget class="QLabel" name="serial_number_dut">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Power supply:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="power_supply_dut">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
               </widget>
              </item>
              <item row="1" column="0">
-              <widget class="QWidget" name="widget_2" native="true">
-               <layout class="QGridLayout" name="gridLayout">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Singleturn bits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_singleturn_bits">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>14</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item row="6" column="0">
-              <widget class="QWidget" name="widget_17" native="true">
-               <layout class="QGridLayout" name="gridLayout_29">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_21">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Polarity:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_polarity">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>1</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+              <widget class="QLabel" name="label_23">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Serial number:</string>
+               </property>
               </widget>
              </item>
              <item row="3" column="0">
-              <widget class="QWidget" name="widget_7" native="true">
-               <layout class="QGridLayout" name="gridLayout_4">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_7">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Status bits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_status_bits">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>2</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+              <widget class="QLabel" name="label_31">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Build number:</string>
+               </property>
               </widget>
              </item>
-             <item row="4" column="0">
-              <widget class="QWidget" name="widget_8" native="true">
-               <layout class="QGridLayout" name="gridLayout_12">
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
-                <item row="0" column="0">
-                 <widget class="QLabel" name="label_8">
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>CRC bits:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QSpinBox" name="dut_crc_bits">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>25</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>9</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="maximum">
-                   <number>10000000</number>
-                  </property>
-                  <property name="value">
-                   <number>6</number>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+             <item row="3" column="1">
+              <widget class="QLabel" name="build_number_dut">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
               </widget>
              </item>
             </layout>
@@ -2810,86 +2175,75 @@ color: #C62828; font-weight: 600;
          </layout>
         </widget>
        </item>
-       <item row="1" column="0" alignment="Qt::AlignVCenter">
-        <widget class="QGroupBox" name="groupBox_9">
+       <item row="12" column="0">
+        <spacer name="verticalSpacer_2">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="logo_label">
          <property name="minimumSize">
           <size>
-           <width>0</width>
-           <height>50</height>
+           <width>225</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>225</width>
+           <height>60</height>
           </size>
          </property>
          <property name="font">
           <font>
            <family>Segoe UI</family>
-           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="refresh_ports_button">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
          </property>
-         <property name="title">
-          <string>MAIN</string>
+         <property name="text">
+          <string>REFRESH PORTS</string>
          </property>
-         <layout class="QGridLayout" name="gridLayout_41">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_17">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Application type:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QComboBox" name="application_type_combobox">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>9</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <item>
-             <property name="text">
-              <string>Rotary</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Linear</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QPushButton" name="refresh_ports_button">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>REFRESH PORTS</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="6" column="0">
         <widget class="QGroupBox" name="dut_connection_groupbox_2">
          <property name="minimumSize">
           <size>
@@ -2900,7 +2254,7 @@ color: #C62828; font-weight: 600;
          <property name="font">
           <font>
            <family>Segoe UI</family>
-           <pointsize>9</pointsize>
+           <pointsize>10</pointsize>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -2909,8 +2263,19 @@ color: #C62828; font-weight: 600;
           <string>REF CONNECTION</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
+          <property name="topMargin">
+           <number>9</number>
+          </property>
+          <property name="bottomMargin">
+           <number>9</number>
+          </property>
           <item row="0" column="0">
            <widget class="QWidget" name="widget_5" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_8">
              <property name="topMargin">
               <number>0</number>
@@ -2918,15 +2283,21 @@ color: #C62828; font-weight: 600;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item row="0" column="2">
+             <item row="0" column="1">
               <widget class="QComboBox" name="ref_comport_combobox">
                <property name="enabled">
                 <bool>true</bool>
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>70</width>
+                 <width>130</width>
                  <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>130</width>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="font">
@@ -2947,27 +2318,18 @@ color: #C62828; font-weight: 600;
                </item>
               </widget>
              </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_5">
-               <property name="font">
-                <font>
-                 <family>Segoe UI</family>
-                 <pointsize>9</pointsize>
-                 <weight>50</weight>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Port:</string>
-               </property>
-              </widget>
-             </item>
              <item row="0" column="0">
               <widget class="QComboBox" name="ref_type_groupbox">
                <property name="minimumSize">
                 <size>
-                 <width>70</width>
+                 <width>65</width>
                  <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>65</width>
+                 <height>16777215</height>
                 </size>
                </property>
                <property name="font">
@@ -2995,6 +2357,11 @@ color: #C62828; font-weight: 600;
           </item>
           <item row="1" column="0">
            <widget class="QWidget" name="widget_23" native="true">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+             </font>
+            </property>
             <layout class="QGridLayout" name="gridLayout_35">
              <property name="topMargin">
               <number>0</number>
@@ -3004,6 +2371,14 @@ color: #C62828; font-weight: 600;
              </property>
              <item row="0" column="1">
               <widget class="QLabel" name="ref_connection_indication">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QLabel {
 color: #C62828; font-weight: 600;
@@ -3041,27 +2416,1658 @@ color: #C62828; font-weight: 600;
             </layout>
            </widget>
           </item>
+          <item row="2" column="0">
+           <widget class="QGroupBox" name="groupBox_13">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>9</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>E2019 Info</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_53">
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_30">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Software version:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="version_ref">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="serial_number_ref">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_17">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Power supply:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="power_supply_ref">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_28">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Serial number:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_32">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>Build number:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="build_number_ref">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                </font>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="logo_label">
+       <item row="2" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="get_e201_info">
          <property name="minimumSize">
           <size>
-           <width>225</width>
-           <height>60</height>
+           <width>200</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>GET E201 INFO</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" alignment="Qt::AlignHCenter">
+        <widget class="QPushButton" name="set_dut_communication">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>22</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>225</width>
-           <height>60</height>
+           <width>200</width>
+           <height>22</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="text">
-          <string/>
+          <string>SET COMMUNICATION</string>
          </property>
         </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="3" rowspan="2">
+     <widget class="QFrame" name="verticalFrame">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>1500</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+       </font>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_23">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item row="2" column="0">
+        <widget class="QWidget" name="widget_22" native="true">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>350</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+          </font>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_36">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <item row="2" column="0" rowspan="2">
+           <widget class="QGroupBox" name="groupBox_8">
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>DATA RECORDING</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_24">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="start_recording">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>START RECORDING</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1" alignment="Qt::AlignHCenter">
+              <widget class="QWidget" name="widget_32" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_51">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1" alignment="Qt::AlignHCenter">
+              <widget class="QCheckBox" name="record_data_checkbox">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Record continuously</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="save_plot_name">
+               <property name="minimumSize">
+                <size>
+                 <width>150</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="inputMask">
+                <string/>
+               </property>
+               <property name="placeholderText">
+                <string>Plot name</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="Line" name="line">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QPushButton" name="save_plot_button">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>150</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>SAVE PLOT</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QSpinBox" name="record_samples_spinbox">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <property name="prefix">
+                <string>Samples: </string>
+               </property>
+               <property name="minimum">
+                <number>1</number>
+               </property>
+               <property name="maximum">
+                <number>1000000000</number>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="sampling_indicator">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {color: #C62828; font-weight: 600;}</string>
+               </property>
+               <property name="text">
+                <string>● NO RECORDING!</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="1" rowspan="2">
+           <widget class="QGroupBox" name="groupBox_5">
+            <property name="minimumSize">
+             <size>
+              <width>500</width>
+              <height>150</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>1666</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>LIVE VALUES</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_21">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>3</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item row="7" column="1">
+              <widget class="QLabel" name="p2p_error_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Error P2P [deg]: --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="dut_index_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>DUT Index:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="ref_position_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>REF [deg]:--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QLabel" name="multiturn_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Multiturn: --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="12" column="0" colspan="2">
+              <widget class="QWidget" name="widget_30" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_25">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="dut_status_label">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>150</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+    background-color: grey;     
+    color: white;
+   border-radius: 10px;
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>STATUS: 0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="dut_counts_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>DUT [counts]: --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="1">
+              <widget class="QLabel" name="rms_error_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Error RMS [deg]: --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="ref_counts_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>REF [counts]:  --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="dut_position_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>DUT [deg]: --</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="stdev_noise_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Noise P2P [6σ]: -- </string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLabel" name="ref_index_label">
+               <property name="minimumSize">
+                <size>
+                 <width>200</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>200</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Error DNL [deg]: --</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="3">
+           <widget class="QGroupBox" name="groupBox_12">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>ERRORS LOG</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_52">
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>9</number>
+             </property>
+             <item row="0" column="1">
+              <widget class="QLabel" name="error_log">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel {
+color: #C62828; font-weight: 600;
+}</string>
+               </property>
+               <property name="text">
+                <string>--</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QPushButton" name="clear_error">
+               <property name="maximumSize">
+                <size>
+                 <width>100</width>
+                 <height>22</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>CLEAR ERROR</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="2" rowspan="2">
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>MOTOR</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_17">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_11" native="true">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_16">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="2" column="2">
+                 <widget class="QComboBox" name="supported_motors">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                   </font>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2" colspan="2">
+                 <widget class="QWidget" name="widget_31" native="true">
+                  <layout class="QGridLayout" name="gridLayout_41">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QSpinBox" name="gear_ratio">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>90</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                      </font>
+                     </property>
+                     <property name="prefix">
+                      <string>Gear ratio: </string>
+                     </property>
+                     <property name="minimum">
+                      <number>1</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QSpinBox" name="motor_driver">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>130</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                      </font>
+                     </property>
+                     <property name="prefix">
+                      <string>Main motor id: </string>
+                     </property>
+                     <property name="maximum">
+                      <number>5</number>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QPushButton" name="motor_connect_button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>22</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>CONNECT</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QFrame" name="debug_motor_widget">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_32">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QWidget" name="widget_12" native="true">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_19">
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_10">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Set speed:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QSpinBox" name="speed_set">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="suffix">
+                      <string> [rpm]</string>
+                     </property>
+                     <property name="minimum">
+                      <number>-500</number>
+                     </property>
+                     <property name="maximum">
+                      <number>500</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QPushButton" name="set_speed_button">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>SET SPEED</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QWidget" name="widget_19" native="true">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_10">
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item row="0" column="2">
+                    <widget class="QPushButton" name="stop_button">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>STOP</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" alignment="Qt::AlignHCenter">
+                    <widget class="QCheckBox" name="enable_motor_checkbox">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Enable</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QWidget" name="widget_6" native="true">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_9">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="horizontalSpacing">
+                    <number>3</number>
+                   </property>
+                   <item row="0" column="0" alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="label_14">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>10</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>CURRENT SPEED:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1" alignment="Qt::AlignHCenter">
+                    <widget class="QLabel" name="current_speed_label">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>10</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>0.00</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <widget class="QLabel" name="label_13">
+                     <property name="maximumSize">
+                      <size>
+                       <width>40</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>10</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>RPM</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="3">
+           <widget class="QGroupBox" name="groupBox_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="title">
+             <string>PLOT CONTROL</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_31">
+             <property name="topMargin">
+              <number>4</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item row="0" column="1">
+              <widget class="QGroupBox" name="groupBox_7">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Position plot</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_37">
+                <property name="topMargin">
+                 <number>4</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>4</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_18">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Show:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QComboBox" name="display_show_combobox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="currentIndex">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>DUT&amp;REF</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>DUT</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>REF</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_19">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Plot units:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QComboBox" name="plot_units_combobox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Degrees</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Counts</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QGroupBox" name="groupBox_18">
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                 <pointsize>9</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Analysis plot</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_30">
+                <property name="topMargin">
+                 <number>5</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>5</number>
+                </property>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QWidget" name="widget_18" native="true">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_38">
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_20">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Type:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="analysis_type_combobox">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Error</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Noise</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>DNL</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>INL</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="2">
+                 <widget class="QWidget" name="widget_24" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <layout class="QGridLayout" name="gridLayout_39">
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_15">
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Show:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QComboBox" name="noise_show_combobox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Segoe UI</family>
+                       <pointsize>9</pointsize>
+                       <weight>50</weight>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>DUT</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>REF</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QWidget" name="widget_33" native="true">
+               <layout class="QGridLayout" name="gridLayout_54">
+                <property name="bottomMargin">
+                 <number>5</number>
+                </property>
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="constant_reading">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>CONSTANT POSITION READING</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="zero_offset_button">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>ZERO OFFSET</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QPushButton" name="open_index_plot">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>OPEN INDEX PLOT</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QSpinBox" name="plot_buffer_size">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="prefix">
+                   <string>Plot buffer size:  </string>
+                  </property>
+                  <property name="minimum">
+                   <number>100</number>
+                  </property>
+                  <property name="maximum">
+                   <number>10000</number>
+                  </property>
+                  <property name="value">
+                   <number>300</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <layout class="QVBoxLayout" name="plot_layout"/>
        </item>
       </layout>
      </widget>
@@ -3073,7 +4079,7 @@ color: #C62828; font-weight: 600;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1407</width>
+     <width>1466</width>
      <height>21</height>
     </rect>
    </property>

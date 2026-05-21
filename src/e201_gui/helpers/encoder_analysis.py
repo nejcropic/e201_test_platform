@@ -129,6 +129,17 @@ class Plotter:
             saving_path=self.saving_path / f"{self.plot_name}_dnl.png",
         )
 
+    def plot_index(self, scaled_ref, scaled_index, index_label):
+        self.plot_data(
+            x_data=scaled_ref,
+            y_data=[scaled_index],
+            label=["Position Index"],
+            title=f"{index_label} Z Position Index",
+            x_label="Reference Position [deg]",
+            y_label=f"{index_label} Z Position [counts]",
+            saving_path=self.saving_path / f"{self.plot_name}_{index_label}.png",
+        )
+
     @staticmethod
     def plot_data(x_data, y_data, label, title, x_label, y_label, saving_path):
         fig = Figure(figsize=(12, 6), dpi=150)

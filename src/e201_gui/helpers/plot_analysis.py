@@ -7,15 +7,28 @@ class PlotAnalysis(QThread):
     finished_signal = pyqtSignal(str)
 
     def __init__(
-        self, x, ts, ref_scaled, dut_scaled, ref_counts, dut_counts, noise_analyse, saving_path: Path, plot_name: str
+        self,
+        x,
+        ts,
+        ref_scaled,
+        dut_scaled,
+        ref_counts,
+        dut_counts,
+        dut_index,
+        ref_index,
+        noise_analyse,
+        saving_path: Path,
+        plot_name: str,
     ):
         super().__init__()
         self.x = x.copy()
         self.ts = ts.copy()
-        self.ref_scaled = ref_scaled.copy()
         self.dut_scaled = dut_scaled.copy()
+        self.ref_scaled = ref_scaled.copy()
         self.dut_counts = dut_counts.copy()
         self.ref_counts = ref_counts.copy()
+        self.dut_index = dut_index.copy()
+        self.ref_index = ref_index.copy()
         self.noise_analyse = noise_analyse
         self.saving_path = saving_path
         self.plot_name = plot_name or "plot"
@@ -49,3 +62,9 @@ class PlotAnalysis(QThread):
 
             # ERROR FIGURE
             plotter.plot_error(scaled_ref=scaled_ref, error=error, p2p=p2p, rms=rms)
+
+            # INDEX FIGURE
+            scaled_dut_index, scaled_ref = analysis.sort_positions(self.dut_index, self.ref_scaled)
+            scaled_ref_index, scaled_ref = analysis.sort_positions(self.dut_index, self.ref_scaled)
+            plotter.plot_index(scaled_ref=scaled_ref, scaled_index=scaled_dut_index, index_label="DUT")
+            plotter.plot_index(scaled_ref=scaled_ref, scaled_index=scaled_ref_index, index_label="REF")

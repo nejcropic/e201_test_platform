@@ -5,6 +5,6 @@ setlocal
 endlocal
 
 echo Starting platform GUI...
-uv run e201
+uv run gui
 
 pause

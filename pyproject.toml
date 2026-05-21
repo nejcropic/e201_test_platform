@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "e201-gui"
-version = "1.0.0"
+version = "1.2.0"
 description = "Testing platform to test encoders with E201 interface"
 readme = "README.md"
 authors = [

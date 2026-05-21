@@ -8,6 +8,7 @@ class Parser:
         self.dut_resolution = self.get_dut_resolution()
         self.ref_resolution = self.get_ref_resolution()
         self.dut_parser = get_protocol_parser(self.dut_settings.get("communication"))(self.dut_settings)
+        self.dut_parser.resolution = self.dut_settings.get("resolution")
 
     def update_parser(self, encoder_data):
         self.dut_settings = encoder_data.get("dut_settings")
@@ -19,14 +20,25 @@ class Parser:
         if isinstance(data, list):
             data = bytes(data)
 
+        # DUT
         dut_bytes = self.dut_settings["dut_bytes"]
-        ref_frame = int.from_bytes(data[dut_bytes : dut_bytes + 4], "big")
-        timestamp_frame = int.from_bytes(data[dut_bytes + 4 : dut_bytes + 12], "little")
 
-        ref_frame = int(ref_frame % self.get_ref_counts())
         parsed_frame = self.dut_parser.parse_dut_frame(data, dut_bytes)
+        if self.dut_settings.get("communication").lower() == "abz":
+            pos = parsed_frame["Position"].to_bytes(dut_bytes, "big")
+            position = int.from_bytes(pos[0:4], "big")
+            index = int.from_bytes(data[4:8], "big")
+            parsed_frame["DUT_Index"] = index
+
+            parsed_frame["Position"] = position % self.dut_parser.resolution
+
+        # Timestamp
+        parsed_frame["Timer"] = int.from_bytes(data[dut_bytes + 4 : dut_bytes + 12], "little")
+
+        # Reference
+        ref_frame = int.from_bytes(data[dut_bytes : dut_bytes + 4], "big")
+        ref_frame = int(ref_frame % self.get_ref_counts())
         parsed_frame["Reference"] = ref_frame
-        parsed_frame["Timer"] = timestamp_frame
 
         return parsed_frame
 

@@ -6,7 +6,7 @@ from e201_gui.gui.acquisition_worker import AcquisitionWorker
 from e201_gui.gui.connect_elements import ConnectElements
 from e201_gui.e201_drivers.parser import Parser
 from e201_gui.gui.device_handling import DeviceHandling
-from e201_gui.gui.helpers import load_pixmap
+from e201_gui.gui.helpers import load_icon, load_pixmap
 from e201_gui.gui.miss_image_window import MisImageWindow
 from e201_gui.gui.plot_control import PlotControl
 from e201_gui.gui.ui_template.e201_ui_template import Ui_MainWindow
@@ -72,17 +72,35 @@ class E201TestPlatform(QtWidgets.QMainWindow):
 
     def motor_worker_setup(self):
         self.motor_worker = MotorWorker()
-        self.motor_worker.finished_signal.connect(self.on_motor_stopped)
         self.motor_worker.speed_signal.connect(self.on_speed_update)
+        self.motor_worker.error_signal.connect(self.on_motor_stopped)
         self.motor_worker.start()
 
     def acquisition_worker_setup(self):
         self.acquisition_worker = AcquisitionWorker(self.live_plot.buffer, self.parser)
-        self.acquisition_worker.error_response_signal.connect(self.handle_register_error)
+        self.acquisition_worker.error_signal.connect(self.handle_error)
         self.acquisition_worker.register_response_signal.connect(self.handle_register_response)
+        self.acquisition_worker.device_info_signal.connect(self.handle_e201_info)
         self.acquisition_worker.miss_image_signal.connect(self.plot_miss_image)
         self.acquisition_worker.recording_finished_signal.connect(self.on_recording)
         self.acquisition_worker.start()
+
+    @pyqtSlot(object)
+    def handle_e201_info(self, e201_info):
+        dut_info = e201_info.get("dut")
+        ref_info = e201_info.get("ref")
+
+        if dut_info is not None:
+            self.ui.power_supply_dut.setText(f"{str(dut_info.get('power_supply'))}")
+            self.ui.serial_number_dut.setText(f"{str(dut_info.get('serial_number'))}")
+            self.ui.version_dut.setText(f"{str(dut_info.get('software_version'))}")
+            self.ui.build_number_dut.setText(f"{str(dut_info.get('build_number'))}")
+
+        if ref_info is not None:
+            self.ui.power_supply_ref.setText(f"{str(ref_info.get('power_supply'))}")
+            self.ui.serial_number_ref.setText(f"{str(ref_info.get('serial_number'))}")
+            self.ui.version_ref.setText(f"{str(ref_info.get('software_version'))}")
+            self.ui.build_number_ref.setText(f"{str(ref_info.get('build_number'))}")
 
     @pyqtSlot(object)
     def on_speed_update(self, speed):
@@ -91,10 +109,12 @@ class E201TestPlatform(QtWidgets.QMainWindow):
     @pyqtSlot(object)
     def on_motor_stopped(self, error):
         self.motor_worker_setup()
+        self.handle_error(error)
 
     @pyqtSlot(object)
-    def handle_register_error(self, data):
+    def handle_error(self, data):
         try:
+            self.ui.error_log.setText(str(data))
             self.messages.show_error(str(data), "")
         except Exception as e:
             print(e)
@@ -141,6 +161,7 @@ def main():
     app = QtWidgets.QApplication(sys.argv)
 
     app.setFont(QtGui.QFont("Segoe UI", 9))
+    app.setWindowIcon(load_icon("rls_logo.ico"))
 
     w = E201TestPlatform()
     w._initialize()

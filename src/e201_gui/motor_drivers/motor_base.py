@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class MotorBase(ABC):
-    def __init__(self):
+    def __init__(self, gear_ratio: int = 1):
         pass
 
     @abstractmethod

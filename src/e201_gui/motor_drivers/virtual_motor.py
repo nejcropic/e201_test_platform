@@ -2,10 +2,12 @@ from e201_gui.motor_drivers.motor_base import MotorBase
 
 
 class VirtualMotor(MotorBase):
-    def __init__(self):
+    def __init__(self, gear_ratio: int = 1):
+        self._velocity_set = 0
         pass
 
     def set_speed(self, speed):
+        self._velocity_set = speed
         print(f"[VIRTUAL MOTOR]: Motor speed set to {speed}")
 
     def stop(self):
@@ -21,4 +23,4 @@ class VirtualMotor(MotorBase):
         print("[VIRTUAL MOTOR]: Motor disconnect")
 
     def get_velocity(self) -> float:
-        return -999
+        return self._velocity_set

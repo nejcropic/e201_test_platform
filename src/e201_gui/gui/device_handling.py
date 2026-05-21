@@ -13,10 +13,12 @@ class DeviceHandling:
         if self.parent.acquisition_worker.master.dut is None:
             if port != "None":
                 try:
+                    port = port.split(" - ")[0]
                     self.parent.auxiliary.update_parser()
                     self.call_reg_function("connect_dut", e201_type, port)
                     self.call_reg_function("dut_power_on", voltage)
                     self.call_reg_function("set_dut_communication", self.parent.acquisition_worker.parser.dut_settings)
+                    self.call_reg_function("get_e201_info")
                     self.parent.auxiliary.set_connection_button(
                         self.ui.dut_connection_indication, self.ui.dut_comport_connect, True
                     )
@@ -24,12 +26,8 @@ class DeviceHandling:
 
                 except Exception as e:
                     tb = traceback.format_exc()
-                    self.parent.messages.show_warning(
-                        "Cannot connect to dut!",
-                        f"Error: {e} \nLine: {tb}",
-                    )
+                    self.parent.messages.show_warning("Cannot connect to dut!", f"Error: {e} \nLine: {tb}")
         else:
-            self.sync_sampling(False)
             self.call_reg_function("close_dut")
             self.parent.auxiliary.set_connection_button(
                 self.ui.dut_connection_indication, self.ui.dut_comport_connect, False
@@ -41,9 +39,11 @@ class DeviceHandling:
         if self.parent.acquisition_worker.master.ref is None:
             if port != "None":
                 try:
+                    port = port.split(" - ")[0]
                     self.parent.auxiliary.update_parser()
                     self.call_reg_function("connect_ref", e201_type, port)
                     self.call_reg_function("ref_power_on", 5000)
+                    self.call_reg_function("get_e201_info")
                     self.parent.auxiliary.set_connection_button(
                         self.ui.ref_connection_indication, self.ui.ref_comport_connect, True
                     )
@@ -54,26 +54,13 @@ class DeviceHandling:
                         f"Error: {e} \nLine: {tb}",
                     )
         else:
-            self.sync_sampling(False)
             self.call_reg_function("close_ref")
             self.parent.auxiliary.set_connection_button(
                 self.ui.ref_connection_indication, self.ui.ref_comport_connect, False
             )
 
-    def sync_sampling(self, checked):
-        if checked:
-            if self.parent.acquisition_worker.master.dut is None or self.parent.acquisition_worker.master.ref is None:
-                self.parent.messages.show_warning(
-                    "Connection with DUT and reference have to be established to sync samples!",
-                    "",
-                )
-                return
-
-            self.call_reg_function("enable_synced_sampling")
-            self.parent.on_zero_offset()
-
-        else:
-            self.call_reg_function("disable_synced_sampling")
+    def get_e201_info(self):
+        self.parent.acquisition_worker.enqueue_command("get_e201_info")
 
     def write_registers(self):
         address, value, signed, bank, length = self.parent.auxiliary.get_register_params()
