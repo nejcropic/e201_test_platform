@@ -193,7 +193,7 @@ class AcquisitionWorker(QThread):
             noise_ref = float(ref_counts - self.prev_ref_counts)
 
         if self.set_zero_offset:
-            self._error_offset = err_deg
+            self._error_offset = self._wrap_error_deg(dut_deg - ref_deg)
             self.set_zero_offset = False
         self.prev_err_deg = err_deg
         self.prev_dut_counts = dut_counts
